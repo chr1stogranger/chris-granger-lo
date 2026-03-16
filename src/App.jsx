@@ -244,8 +244,8 @@ export default function App() {
             <a onClick={() => scrollTo('contact')} className="btn btn-accent" style={{cursor:'pointer'}}>Get a custom Blueprint &rarr;</a>
           </div>
         </div>
-        <div className="embed-placeholder">
-          <iframe src={LINKS.blueprint} title="Mortgage Blueprint" allow="clipboard-write" loading="lazy" />
+        <div className="embed-placeholder" style={{height:'900px'}}>
+          <iframe src={LINKS.blueprint} title="Mortgage Blueprint" allow="clipboard-write" loading="lazy" style={{width:'133.33%',height:'133.33%',transform:'scale(0.75)',transformOrigin:'top left',border:'none'}} />
         </div>
       </section>
 

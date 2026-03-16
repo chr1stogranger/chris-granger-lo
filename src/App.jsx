@@ -1,432 +1,477 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useState } from 'react'
 
-// ── Brand Kit ──
-const FONT = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
-const MONO = "'JetBrains Mono', 'SF Mono', monospace";
-const C = {
-  bg: "#050505", card: "#0F0F0F", elevated: "#0A0A0A", surface: "#1A1A1A",
-  text: "#EDEDED", textSec: "#A1A1A1", textMuted: "#666666",
-  border: "rgba(255,255,255,0.06)", borderHover: "rgba(255,255,255,0.12)",
-  indigo: "#6366F1", indigoLight: "#818CF8", blue: "#3B82F6",
-  teal: "#06B6D4", green: "#10B981", orange: "#F59E0B", red: "#EF4444",
-  purple: "#8B5CF6",
-};
-
-// ── Links ──
 const LINKS = {
-  blueprint: "https://mortgageblueprint.app",
-  pricepoint: "https://mortgageblueprint.app", // PricePoint is inside Blueprint
-  calendly: "https://calendly.com/teamgranger",
-  substack: "https://threepointthursday.substack.com",
-  email: "mailto:cgranger@focusmortgage.com",
-  apply: "https://arive.com", // Arive LOS application link
-  focusMortgage: "https://focusmortgage.com",
-  nmls: "https://www.nmlsconsumeraccess.org/TuringTestPage.aspx?ReturnUrl=/EntityDetails.aspx/COMPANY/952015",
-};
+  blueprint: 'https://mortgage-blueprint.vercel.app',
+  pricepoint: 'https://mortgage-blueprint.vercel.app?mode=pricepoint',
+  calendly: 'https://calendly.com/cgranger-xperthomelending/30min',
+  substack: 'https://chrisgranger.substack.com',
+  arive: 'https://apply.arivehq.io/chris-granger',
+  email: 'mailto:cgranger@xperthomelending.com',
+  phone: 'tel:4159878489',
+  yelp: 'https://www.yelp.com/biz/chris-granger-xpert-home-lending-alameda',
+  linkedin: 'https://www.linkedin.com/in/christogranger/',
+}
 
-// ── Shared Components ──
-const Nav = () => {
-  const loc = useLocation();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
-  }, []);
-  useEffect(() => setMenuOpen(false), [loc]);
-  const navLinks = [
-    ["/", "Home"], ["/blueprint", "Blueprint"], ["/pricepoint", "PricePoint"],
-    ["/newsletter", "Newsletter"], ["/about", "About"],
-  ];
+const Icons = {
+  Blueprint: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>,
+  Target: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>,
+  Users: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
+  Star: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+  Mail: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>,
+  Home: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+  Dollar: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>,
+  Shield: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
+  ShieldCheck: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>,
+  Refresh: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>,
+  Activity: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>,
+  Key: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>,
+  CreditCard: () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginRight:'6px'}}><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>,
+  Bolt: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+  Phone: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>,
+  Person: () => <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+  Menu: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>,
+  Close: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
+}
+
+export default function App() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '' })
+
+  const scrollTo = (id) => {
+    setMobileMenuOpen(false)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      background: scrolled ? "rgba(5,5,5,0.85)" : "transparent",
-      backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
-      WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "none",
-      borderBottom: scrolled ? `1px solid ${C.border}` : "1px solid transparent",
-      transition: "all 0.3s" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 10 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "#fff", fontSize: 16, fontWeight: 800 }}>CG</span>
+    <>
+      {/* HEADER */}
+      <header className="header">
+        <div className="container">
+          <div className="logo" onClick={() => scrollTo('hero')}>
+            <div className="logo-mark">CG</div>
+            <span className="logo-text">Chris Granger</span>
+            <span className="logo-divider">/</span>
+            <span className="logo-sub">Mortgage</span>
           </div>
-          <div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: C.text, letterSpacing: "-0.02em", lineHeight: 1.1 }}>Chris Granger</div>
-            <div style={{ fontSize: 9, fontWeight: 600, color: C.textMuted, letterSpacing: 1.5, textTransform: "uppercase", fontFamily: MONO }}>Focus Mortgage</div>
+          <nav className="nav">
+            <a onClick={() => scrollTo('about')}>About</a>
+            <a onClick={() => scrollTo('loans')}>Programs</a>
+            <a onClick={() => scrollTo('calculator')}>Calculator</a>
+            <a onClick={() => scrollTo('pricepoint')}>PricePoint</a>
+            <a onClick={() => scrollTo('reviews')}>Reviews</a>
+            <a onClick={() => scrollTo('newsletter')}>Newsletter</a>
+            <a onClick={() => scrollTo('agents')}>Agents</a>
+            <a onClick={() => scrollTo('contact')} className="nav-cta">Get Started</a>
+          </nav>
+          <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <Icons.Close /> : <Icons.Menu />}
+          </button>
+        </div>
+        {mobileMenuOpen && (
+          <div style={{background:'var(--bg-elevated)',borderBottom:'1px solid var(--border)',padding:'16px 24px',display:'flex',flexDirection:'column',gap:'12px'}}>
+            {['about','loans','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
+              <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id}</a>
+            ))}
+            <a href={LINKS.arive} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
           </div>
-        </Link>
-        {/* Desktop nav */}
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }} className="desktop-nav">
-          {navLinks.map(([to, label]) => (
-            <Link key={to} to={to} style={{ padding: "6px 14px", fontSize: 13, fontWeight: loc.pathname === to ? 700 : 500,
-              color: loc.pathname === to ? C.text : C.textSec, textDecoration: "none", borderRadius: 8,
-              background: loc.pathname === to ? "rgba(255,255,255,0.06)" : "transparent", transition: "all 0.2s" }}>{label}</Link>
-          ))}
-          <a href={LINKS.apply} target="_blank" rel="noopener" style={{ marginLeft: 8, padding: "8px 20px", fontSize: 13, fontWeight: 600,
-            background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, color: "#fff", textDecoration: "none",
-            borderRadius: 9999, boxShadow: `0 0 20px rgba(99,102,241,0.3)`, transition: "all 0.2s" }}>Apply Now</a>
-        </div>
-        {/* Mobile hamburger */}
-        <button onClick={() => setMenuOpen(!menuOpen)} className="mobile-menu-btn" style={{ background: "none", border: "none", color: C.text, fontSize: 24, cursor: "pointer", padding: 4, display: "none" }}>
-          {menuOpen ? "\u2715" : "\u2630"}
-        </button>
-      </div>
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="mobile-dropdown" style={{ padding: "0 24px 20px", display: "flex", flexDirection: "column", gap: 4 }}>
-          {navLinks.map(([to, label]) => (
-            <Link key={to} to={to} style={{ padding: "12px 16px", fontSize: 15, fontWeight: 600, color: loc.pathname === to ? C.indigo : C.text,
-              textDecoration: "none", borderRadius: 10, background: loc.pathname === to ? `${C.indigo}15` : "transparent" }}>{label}</Link>
-          ))}
-          <a href={LINKS.apply} target="_blank" rel="noopener" style={{ marginTop: 8, padding: "14px 20px", fontSize: 15, fontWeight: 700, textAlign: "center",
-            background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, color: "#fff", textDecoration: "none", borderRadius: 12 }}>Apply Now</a>
-        </div>
-      )}
-    </nav>
-  );
-};
+        )}
+      </header>
 
-const Footer = () => (
-  <footer style={{ background: C.elevated, borderTop: `1px solid ${C.border}`, padding: "60px 24px 40px" }}>
-    <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 40, marginBottom: 40 }}>
-        <div>
-          <div style={{ fontSize: 17, fontWeight: 700, color: C.text, marginBottom: 12 }}>Chris Granger</div>
-          <div style={{ fontSize: 13, color: C.textSec, lineHeight: 1.8 }}>
-            Mortgage Broker<br />
-            Focus Mortgage<br />
-            <span style={{ fontFamily: MONO, fontSize: 11, color: C.textMuted }}>NMLS #952015</span>
+      {/* HERO */}
+      <section className="hero" id="hero">
+        <div className="hero-aurora">
+          <div className="blob blob-1"></div>
+          <div className="blob blob-2"></div>
+          <div className="blob blob-3"></div>
+        </div>
+        <div className="hero-grid"></div>
+        <div className="container animate">
+          <div className="label" style={{marginBottom:'24px'}}>NMLS #952015 &middot; 8 States Licensed</div>
+          <h1>Your mortgage,<br/><span className="gradient">simplified.</span></h1>
+          <p className="subtitle">1,000+ loans closed. I built the tools that make every dollar visible — so you make the best decision on the biggest purchase of your life.</p>
+          <div className="btn-group" style={{justifyContent:'center'}}>
+            <a onClick={() => scrollTo('calculator')} className="btn btn-shimmer btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint</a>
+            <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call &rarr;</a>
+          </div>
+          <div className="hero-badges">
+            <div className="hero-chip"><div className="dot"></div>86 Five-Star Reviews</div>
+            <div className="hero-chip"><div className="dot" style={{background:'var(--amber)'}}></div>Best Broker, Alameda</div>
+            <div className="hero-chip"><div className="dot" style={{background:'var(--blue)'}}></div>1,000+ Loans Closed</div>
           </div>
         </div>
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: C.textMuted, letterSpacing: 2, textTransform: "uppercase", fontFamily: MONO, marginBottom: 12 }}>Tools</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <Link to="/blueprint" style={{ fontSize: 13, color: C.textSec, textDecoration: "none" }}>Mortgage Blueprint</Link>
-            <Link to="/pricepoint" style={{ fontSize: 13, color: C.textSec, textDecoration: "none" }}>PricePoint</Link>
-            <a href={LINKS.apply} target="_blank" rel="noopener" style={{ fontSize: 13, color: C.textSec, textDecoration: "none" }}>Apply Online</a>
+      </section>
+
+      {/* STATS */}
+      <section className="stats-strip">
+        <div className="container">
+          <div className="stats-row">
+            <div><h3>1,000+</h3><p>Loans Closed</p></div>
+            <div><h3>13+</h3><p>Years</p></div>
+            <div><h3>8</h3><p>States</p></div>
+            <div><h3>5.0</h3><p>Yelp Rating</p></div>
           </div>
         </div>
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: C.textMuted, letterSpacing: 2, textTransform: "uppercase", fontFamily: MONO, marginBottom: 12 }}>Connect</div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <a href={LINKS.email} style={{ fontSize: 13, color: C.textSec, textDecoration: "none" }}>cgranger@focusmortgage.com</a>
-            <a href={LINKS.calendly} target="_blank" rel="noopener" style={{ fontSize: 13, color: C.textSec, textDecoration: "none" }}>Schedule a Call</a>
-            <a href={LINKS.substack} target="_blank" rel="noopener" style={{ fontSize: 13, color: C.textSec, textDecoration: "none" }}>Three Point Thursday</a>
+      </section>
+
+      {/* BENTO */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Why work with me</div>
+            <div className="glow-line"></div>
+            <h2>The mortgage process,<br/>fixed.</h2>
+            <p>I heard from hundreds of clients that the process was broken. So I built the tools to make it simple.</p>
           </div>
-        </div>
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 600, color: C.textMuted, letterSpacing: 2, textTransform: "uppercase", fontFamily: MONO, marginBottom: 12 }}>Licensed In</div>
-          <div style={{ fontSize: 12, color: C.textMuted, lineHeight: 1.8, fontFamily: MONO }}>CA · OR · WA · NV · AZ · CO · HI · TX</div>
-        </div>
-      </div>
-      <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 24, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <div style={{ fontSize: 11, color: C.textMuted, lineHeight: 1.6, maxWidth: 700 }}>
-          This is not a commitment to lend. All loan programs, rates, terms, and conditions are subject to change without notice. Equal Housing Lender.
-          <a href={LINKS.nmls} target="_blank" rel="noopener" style={{ color: C.textMuted, marginLeft: 4 }}>NMLS Consumer Access</a>
-        </div>
-        <div style={{ fontSize: 11, color: C.textMuted }}>&copy; {new Date().getFullYear()} Chris Granger · Focus Mortgage</div>
-      </div>
-    </div>
-  </footer>
-);
-
-const Pill = ({ children, color = C.indigo }) => (
-  <span style={{ display: "inline-block", padding: "4px 12px", fontSize: 11, fontWeight: 600, fontFamily: MONO,
-    letterSpacing: 1.5, textTransform: "uppercase", color, background: `${color}15`, borderRadius: 9999 }}>{children}</span>
-);
-
-const SectionTitle = ({ pill, title, sub }) => (
-  <div style={{ textAlign: "center", marginBottom: 48 }}>
-    {pill && <div style={{ marginBottom: 12 }}><Pill>{pill}</Pill></div>}
-    <h2 style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 800, color: C.text, letterSpacing: "-0.04em", lineHeight: 1.1, margin: 0 }}>{title}</h2>
-    {sub && <p style={{ fontSize: 16, color: C.textSec, marginTop: 12, maxWidth: 560, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>{sub}</p>}
-  </div>
-);
-
-const ToolCard = ({ title, desc, href, linkText, color = C.indigo, internal }) => (
-  <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 16, padding: "28px 24px",
-    transition: "all 0.2s", cursor: "pointer" }}
-    onMouseEnter={e => { e.currentTarget.style.borderColor = `${color}40`; e.currentTarget.style.transform = "translateY(-2px)"; }}
-    onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}>
-    <div style={{ width: 40, height: 40, borderRadius: 10, background: `${color}15`, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
-      <div style={{ width: 8, height: 8, borderRadius: "50%", background: color }} />
-    </div>
-    <h3 style={{ fontSize: 18, fontWeight: 700, color: C.text, margin: "0 0 8px", letterSpacing: "-0.02em" }}>{title}</h3>
-    <p style={{ fontSize: 14, color: C.textSec, lineHeight: 1.6, margin: "0 0 16px" }}>{desc}</p>
-    {internal ? (
-      <Link to={href} style={{ fontSize: 13, fontWeight: 600, color, textDecoration: "none" }}>{linkText} &rarr;</Link>
-    ) : (
-      <a href={href} target="_blank" rel="noopener" style={{ fontSize: 13, fontWeight: 600, color, textDecoration: "none" }}>{linkText} &rarr;</a>
-    )}
-  </div>
-);
-
-// ── Pages ──
-const Home = () => (
-  <>
-    {/* HERO */}
-    <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden", padding: "120px 24px 80px" }}>
-      {/* Gradient orbs */}
-      <div style={{ position: "absolute", top: "-20%", left: "-10%", width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, ${C.indigo}15, transparent 70%)`, filter: "blur(80px)" }} />
-      <div style={{ position: "absolute", bottom: "-10%", right: "-10%", width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, ${C.blue}10, transparent 70%)`, filter: "blur(80px)" }} />
-      <div style={{ maxWidth: 800, textAlign: "center", position: "relative", zIndex: 1 }}>
-        <Pill color={C.green}>Licensed in CA, OR, WA, NV, AZ, CO, HI, TX</Pill>
-        <h1 style={{ fontSize: "clamp(36px, 7vw, 64px)", fontWeight: 900, color: C.text, letterSpacing: "-0.05em", lineHeight: 1.05, margin: "24px 0 16px" }}>
-          Your mortgage,{" "}
-          <span style={{ background: `linear-gradient(135deg, ${C.indigoLight}, ${C.blue}, ${C.teal})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>made clear.</span>
-        </h1>
-        <p style={{ fontSize: "clamp(16px, 2.5vw, 20px)", color: C.textSec, lineHeight: 1.6, maxWidth: 560, margin: "0 auto 36px" }}>
-          I'm Chris Granger, a mortgage broker based in Alameda serving the San Francisco Bay Area.
-          I build tools that turn confusing loan numbers into a clear plan.
-        </p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <Link to="/blueprint" style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700, color: "#fff",
-            background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, borderRadius: 9999, textDecoration: "none",
-            boxShadow: `0 0 30px rgba(99,102,241,0.3)`, transition: "all 0.2s" }}>Open Blueprint</Link>
-          <a href={LINKS.calendly} target="_blank" rel="noopener" style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700,
-            color: C.text, background: "transparent", border: `1px solid ${C.border}`, borderRadius: 9999, textDecoration: "none", transition: "all 0.2s" }}>Schedule a Call</a>
-        </div>
-        <div style={{ marginTop: 24, fontSize: 12, color: C.textMuted, fontFamily: MONO }}>NMLS #952015 · Focus Mortgage</div>
-      </div>
-    </section>
-
-    {/* TOOLS SECTION */}
-    <section style={{ padding: "80px 24px", maxWidth: 1100, margin: "0 auto" }}>
-      <SectionTitle pill="Tools" title="Everything you need in one place" sub="Interactive tools I built to help you understand every number in your home purchase or refinance." />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
-        <ToolCard title="Mortgage Blueprint" desc="The supercharged mortgage calculator. See your full payment breakdown, costs to close, qualification check, tax savings, and amortization — all in real time." href="/blueprint" linkText="Open Blueprint" color={C.blue} internal />
-        <ToolCard title="PricePoint" desc="A gamified real estate challenge. Guess home prices in your market, sharpen your eye, and compete on the leaderboard." href="/pricepoint" linkText="Play PricePoint" color={C.teal} internal />
-        <ToolCard title="Three Point Thursday" desc="My weekly mortgage, real estate, and business newsletter. Market updates, strategy tips, and rate analysis every Thursday." href="/newsletter" linkText="Read the Newsletter" color={C.purple} internal />
-      </div>
-    </section>
-
-    {/* HOW IT WORKS */}
-    <section style={{ padding: "80px 24px", background: C.elevated }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <SectionTitle pill="Process" title="How we work together" sub="From first conversation to closing day, here's what to expect." />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24 }}>
-          {[
-            ["01", "Discovery Call", "We hop on a quick call to understand your goals, timeline, and financial picture.", C.indigo],
-            ["02", "Your Blueprint", "I build a personalized Mortgage Blueprint showing every number — payment, costs, qualification, and tax savings.", C.blue],
-            ["03", "Get Pre-Approved", "With your Blueprint dialed in, we submit your application through Arive for a fast, smooth pre-approval.", C.teal],
-            ["04", "Close with Confidence", "I quarterback the process from contract to keys, keeping you informed at every milestone.", C.green],
-          ].map(([num, title, desc, color]) => (
-            <div key={num} style={{ padding: "24px 20px" }}>
-              <div style={{ fontSize: 32, fontWeight: 800, fontFamily: MONO, color: `${color}40`, marginBottom: 12 }}>{num}</div>
-              <h3 style={{ fontSize: 16, fontWeight: 700, color: C.text, margin: "0 0 8px" }}>{title}</h3>
-              <p style={{ fontSize: 14, color: C.textSec, lineHeight: 1.6, margin: 0 }}>{desc}</p>
+          <div className="bento">
+            <div className="bento-item span-2">
+              <div className="bento-icon" style={{background:'rgba(99,102,241,0.08)'}}><Icons.Blueprint /></div>
+              <h3>Mortgage Blueprint</h3>
+              <p>My signature tool — a supercharged calculator that maps out every dollar of your loan. Payment breakdown, tax savings, amortization, investment analysis, and side-by-side comparisons. No other broker gives you this.</p>
+              <a onClick={() => scrollTo('calculator')} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* SERVICES */}
-    <section style={{ padding: "80px 24px", maxWidth: 1100, margin: "0 auto" }}>
-      <SectionTitle pill="Services" title="Loan programs for every situation" />
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
-        {["Conventional", "FHA", "VA", "Jumbo", "USDA", "Bank Statement", "DSCR (Investor)", "Refinance", "HELOC", "Construction"].map(p => (
-          <div key={p} style={{ padding: "16px 14px", background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, textAlign: "center" }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: C.text }}>{p}</div>
+            <div className="bento-item">
+              <div className="bento-icon" style={{background:'rgba(6,182,212,0.08)'}}><Icons.Target /></div>
+              <h3>Full Transparency</h3>
+              <p>Every fee, every cost, every dollar — matching your official Loan Estimate. No surprises at closing.</p>
+            </div>
+            <div className="bento-item">
+              <div className="bento-icon" style={{background:'rgba(16,185,129,0.08)'}}><Icons.Users /></div>
+              <h3>30+ Lenders</h3>
+              <p>As a broker, I shop your loan across the whole wholesale market. Banks offer one product — I offer the best one.</p>
+            </div>
+            <div className="bento-item">
+              <div className="bento-icon" style={{background:'rgba(245,158,11,0.08)'}}><Icons.Star /></div>
+              <h3>PricePoint</h3>
+              <p>A game that tests your real estate instincts with real MLS data. City leaderboards. Built for fun.</p>
+              <a onClick={() => scrollTo('pricepoint')} className="card-link" style={{cursor:'pointer'}}>Play now &rarr;</a>
+            </div>
+            <div className="bento-item">
+              <div className="bento-icon" style={{background:'rgba(139,92,246,0.08)'}}><Icons.Mail /></div>
+              <h3>Three Point Thursday</h3>
+              <p>Weekly newsletter: rates, market data, and strategies. Hundreds of Bay Area professionals read it every Thursday.</p>
+              <a onClick={() => scrollTo('newsletter')} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
+            </div>
           </div>
-        ))}
-      </div>
-    </section>
-
-    {/* CTA */}
-    <section style={{ padding: "80px 24px", background: C.elevated }}>
-      <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
-        <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: C.text, letterSpacing: "-0.04em", margin: "0 0 16px" }}>Ready to get started?</h2>
-        <p style={{ fontSize: 16, color: C.textSec, lineHeight: 1.6, marginBottom: 32 }}>
-          Whether you're buying your first home, refinancing, or investing — let's build your Blueprint and map out a plan.
-        </p>
-        <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href={LINKS.apply} target="_blank" rel="noopener" style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700, color: "#fff",
-            background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, borderRadius: 9999, textDecoration: "none",
-            boxShadow: `0 0 20px rgba(99,102,241,0.3)` }}>Apply Now</a>
-          <a href={LINKS.calendly} target="_blank" rel="noopener" style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700,
-            color: C.text, border: `1px solid ${C.border}`, borderRadius: 9999, textDecoration: "none" }}>Schedule a Call</a>
-          <a href={LINKS.email} style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700,
-            color: C.text, border: `1px solid ${C.border}`, borderRadius: 9999, textDecoration: "none" }}>Email Me</a>
         </div>
-      </div>
-    </section>
-  </>
-);
+      </section>
 
-const BlueprintPage = () => (
-  <section style={{ paddingTop: 80 }}>
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 24px 0" }}>
-      <SectionTitle pill="Calculator" title="Mortgage Blueprint"
-        sub="The supercharged mortgage calculator. Enter your numbers and see your full picture — payment breakdown, costs to close, qualification, tax savings, and more." />
-      <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 24, flexWrap: "wrap" }}>
-        <a href={LINKS.calendly} target="_blank" rel="noopener" style={{ padding: "10px 24px", fontSize: 13, fontWeight: 600, color: C.text,
-          border: `1px solid ${C.border}`, borderRadius: 9999, textDecoration: "none" }}>Questions? Schedule a call</a>
-        <a href={LINKS.apply} target="_blank" rel="noopener" style={{ padding: "10px 24px", fontSize: 13, fontWeight: 600, color: "#fff",
-          background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, borderRadius: 9999, textDecoration: "none" }}>Ready to Apply</a>
-      </div>
-    </div>
-    <div style={{ width: "100%", height: "calc(100vh - 160px)", minHeight: 600 }}>
-      <iframe src={LINKS.blueprint} title="Mortgage Blueprint Calculator" style={{ width: "100%", height: "100%", border: "none" }}
-        allow="clipboard-write" loading="lazy" />
-    </div>
-  </section>
-);
+      {/* TESTIMONIALS PREVIEW */}
+      <section className="section" style={{borderTop:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Reviews</div>
+            <div className="glow-line"></div>
+            <h2>What clients say</h2>
+          </div>
+          <div className="review-row">
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step. We never felt lost or confused."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Homebuyer</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Chris possesses an incredible ability to connect people with outstanding products, even when other mortgage lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Bay Area Homeowner</p><p className="review-source">Google</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His Blueprint tool showed us exactly where every dollar was going — no surprises at closing. AMAZING experience."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
+          </div>
+          <div style={{textAlign:'center',marginTop:'32px'}}><a onClick={() => scrollTo('reviews')} className="btn btn-secondary" style={{cursor:'pointer'}}>Read all 86+ reviews &rarr;</a></div>
+        </div>
+      </section>
 
-const PricePointPage = () => (
-  <section style={{ paddingTop: 80 }}>
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "40px 24px 0" }}>
-      <SectionTitle pill="Game" title="PricePoint"
-        sub="Think you know Bay Area real estate? Guess home prices, sharpen your market instincts, and compete on the leaderboard." />
-      <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 24, flexWrap: "wrap" }}>
-        <Link to="/blueprint" style={{ padding: "10px 24px", fontSize: 13, fontWeight: 600, color: C.text,
-          border: `1px solid ${C.border}`, borderRadius: 9999, textDecoration: "none" }}>Open Blueprint</Link>
-        <a href={LINKS.calendly} target="_blank" rel="noopener" style={{ padding: "10px 24px", fontSize: 13, fontWeight: 600, color: "#fff",
-          background: `linear-gradient(135deg, ${C.teal}, ${C.blue})`, borderRadius: 9999, textDecoration: "none" }}>Schedule a Call</a>
-      </div>
-    </div>
-    <div style={{ width: "100%", height: "calc(100vh - 160px)", minHeight: 600 }}>
-      <iframe src={`${LINKS.pricepoint}?mode=pricepoint`} title="PricePoint Game" style={{ width: "100%", height: "100%", border: "none" }}
-        allow="clipboard-write" loading="lazy" />
-    </div>
-  </section>
-);
+      {/* CTA */}
+      <section className="cta-section">
+        <div className="aurora"></div>
+        <div className="container">
+          <h2>Ready to<br/><span className="gradient" style={{background:'linear-gradient(135deg,var(--accent-bright),var(--blue),var(--teal))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>map out your loan?</span></h2>
+          <p>First-time buyer, move-up, investor — let's build your Blueprint.</p>
+          <div className="btn-group" style={{justifyContent:'center'}}>
+            <a onClick={() => scrollTo('calculator')} className="btn btn-accent btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint &rarr;</a>
+            <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call</a>
+          </div>
+        </div>
+      </section>
 
-const NewsletterPage = () => (
-  <section style={{ paddingTop: 80 }}>
-    <div style={{ maxWidth: 700, margin: "0 auto", padding: "60px 24px" }}>
-      <SectionTitle pill="Newsletter" title="Three Point Thursday"
-        sub="Your weekly mortgage, real estate, and business newsletter from your favorite local lender. Every Thursday." />
-
-      <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 16, padding: "32px 28px", marginBottom: 24 }}>
-        <h3 style={{ fontSize: 18, fontWeight: 700, color: C.text, margin: "0 0 12px" }}>What you get each week</h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          {[
-            ["Rate Check", "Where rates are trending, sourced from Mortgage News Daily."],
-            ["Three Points", "Three curated topics covering market updates, loan product education, strategy tips, and Bay Area property spotlights."],
-            ["Actionable Takeaways", "Every point ends with something you can actually do — not just information, but a plan."],
-          ].map(([t, d]) => (
-            <div key={t} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.purple, marginTop: 8, flexShrink: 0 }} />
-              <div>
-                <span style={{ fontSize: 14, fontWeight: 600, color: C.text }}>{t}</span>
-                <span style={{ fontSize: 14, color: C.textSec }}> — {d}</span>
+      {/* ABOUT */}
+      <section className="section" id="about">
+        <div className="container">
+          <div className="about-grid-v3">
+            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+              <Icons.Person />
+            </div>
+            <div>
+              <div className="label">About</div>
+              <h2 style={{fontSize:'2.4rem',margin:'16px 0 20px'}}>Hi, I'm Chris.</h2>
+              <p style={{color:'var(--text-secondary)',marginBottom:'16px',fontSize:'0.95rem',lineHeight:'1.7'}}>Mortgage broker since 2012. Over 1,000 loans. Based in the Bay Area. I built <strong style={{color:'var(--text-primary)'}}>Mortgage Blueprint</strong> because the industry was designed to confuse people — and I wanted to fix that.</p>
+              <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 30+ wholesale lenders. I'm not selling you a product — I'm building you a plan.</p>
+              <div className="btn-group">
+                <a onClick={() => scrollTo('contact')} className="btn btn-primary" style={{cursor:'pointer'}}>Work with me</a>
+                <a onClick={() => scrollTo('calculator')} className="btn btn-secondary" style={{cursor:'pointer'}}>Try the Blueprint</a>
+              </div>
+              <div style={{display:'flex',flexWrap:'wrap',gap:'6px',marginTop:'24px'}}>
+                {['CA','OR','WA','NV','AZ','CO','HI','TX'].map(s => (
+                  <span key={s} className="program-tag" style={{background:'var(--bg-surface)',borderColor:'var(--border)',color:'var(--text-secondary)'}}>{s}</span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div style={{ textAlign: "center" }}>
-        <a href={LINKS.substack} target="_blank" rel="noopener" style={{ display: "inline-block", padding: "14px 36px", fontSize: 16, fontWeight: 700, color: "#fff",
-          background: `linear-gradient(135deg, ${C.purple}, ${C.indigo})`, borderRadius: 9999, textDecoration: "none",
-          boxShadow: `0 0 20px rgba(139,92,246,0.3)`, transition: "all 0.2s" }}>Subscribe on Substack</a>
-        <p style={{ fontSize: 13, color: C.textMuted, marginTop: 12 }}>Free. Every Thursday. No spam.</p>
-      </div>
-
-      {/* Past issues embed */}
-      <div style={{ marginTop: 48 }}>
-        <h3 style={{ fontSize: 16, fontWeight: 700, color: C.text, marginBottom: 16 }}>Recent Issues</h3>
-        <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 16, overflow: "hidden" }}>
-          <iframe src="https://threepointthursday.substack.com/embed" title="Three Point Thursday Newsletter"
-            style={{ width: "100%", height: 400, border: "none" }} loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-const AboutPage = () => (
-  <section style={{ paddingTop: 80 }}>
-    <div style={{ maxWidth: 800, margin: "0 auto", padding: "60px 24px" }}>
-      <SectionTitle pill="About" title="Meet Chris Granger" />
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32 }}>
-        <div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 16, padding: "32px 28px" }}>
-          <p style={{ fontSize: 16, color: C.textSec, lineHeight: 1.8, margin: "0 0 16px" }}>
-            I'm a mortgage broker based in Alameda, California, serving the San Francisco Bay Area and beyond.
-            I work at Focus Mortgage where I'm building a practice centered on transparency, technology, and education.
-          </p>
-          <p style={{ fontSize: 16, color: C.textSec, lineHeight: 1.8, margin: "0 0 16px" }}>
-            I believe the mortgage process should be clear, not confusing. That's why I build tools like
-            Mortgage Blueprint — an interactive calculator that shows you every number in your deal, in real time.
-            No hidden fees, no surprises.
-          </p>
-          <p style={{ fontSize: 16, color: C.textSec, lineHeight: 1.8, margin: 0 }}>
-            Whether you're a first-time buyer in Alameda, refinancing in San Francisco, or investing across the Bay,
-            I'll map out a plan and walk you through every step.
-          </p>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
-          {[
-            ["Licensed States", "CA, OR, WA, NV, AZ, CO, HI, TX"],
-            ["NMLS", "#952015"],
-            ["Company", "Focus Mortgage"],
-            ["Markets", "Alameda, San Francisco, Bay Area"],
-          ].map(([label, val]) => (
-            <div key={label} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 12, padding: "20px 18px" }}>
-              <div style={{ fontSize: 10, fontWeight: 600, color: C.textMuted, letterSpacing: 2, textTransform: "uppercase", fontFamily: MONO, marginBottom: 6 }}>{label}</div>
-              <div style={{ fontSize: 15, fontWeight: 600, color: C.text }}>{val}</div>
-            </div>
-          ))}
-        </div>
-
-        <div style={{ textAlign: "center", padding: "40px 0" }}>
-          <h3 style={{ fontSize: 22, fontWeight: 800, color: C.text, margin: "0 0 16px", letterSpacing: "-0.03em" }}>Let's talk about your goals</h3>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <a href={LINKS.calendly} target="_blank" rel="noopener" style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700, color: "#fff",
-              background: `linear-gradient(135deg, ${C.indigo}, ${C.blue})`, borderRadius: 9999, textDecoration: "none",
-              boxShadow: `0 0 20px rgba(99,102,241,0.3)` }}>Schedule a Call</a>
-            <a href={LINKS.email} style={{ padding: "14px 32px", fontSize: 15, fontWeight: 700,
-              color: C.text, border: `1px solid ${C.border}`, borderRadius: 9999, textDecoration: "none" }}>Email Me</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-);
+      </section>
 
-// ── Scroll to top on route change ──
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
-  return null;
-};
+      {/* LOAN PROGRAMS */}
+      <section className="light-section" id="loans">
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Loan Programs</div>
+            <div className="glow-line"></div>
+            <h2>Find the right loan.</h2>
+            <p>Dozens of lenders. Hundreds of products. Here are the ones I use most.</p>
+          </div>
+          <div className="program-grid">
+            <div className="program-card"><h3><Icons.Home />Conventional</h3><p>Good credit, steady income. The workhorse loan.</p><div><span className="program-tag">3% down</span><span className="program-tag">Fixed & ARM</span><span className="program-tag">Up to $766K</span></div></div>
+            <div className="program-card"><h3><Icons.Dollar />Jumbo</h3><p>Bay Area homes above conforming limits.</p><div><span className="program-tag">$766K+</span><span className="program-tag">IO available</span><span className="program-tag">Up to $3M+</span></div></div>
+            <div className="program-card"><h3><Icons.Shield />FHA</h3><p>Flexible qualifying for first-time buyers.</p><div><span className="program-tag">3.5% down</span><span className="program-tag">580+ FICO</span><span className="program-tag">Gift funds OK</span></div></div>
+            <div className="program-card"><h3><Icons.ShieldCheck />VA</h3><p>Zero-down for vets and active military.</p><div><span className="program-tag">$0 down</span><span className="program-tag">No MI</span><span className="program-tag">Competitive</span></div></div>
+            <div className="program-card"><h3><Icons.Refresh />Refinance</h3><p>Lower rate, shorter term, cash out, drop PMI.</p><div><span className="program-tag">Rate & term</span><span className="program-tag">Cash-out</span><span className="program-tag">Streamline</span></div></div>
+            <div className="program-card"><h3><Icons.Activity />Investment</h3><p>Single-family, multi-unit, DSCR loans.</p><div><span className="program-tag">DSCR</span><span className="program-tag">1-4 units</span><span className="program-tag">ROI analysis</span></div></div>
+            <div className="program-card"><h3><Icons.Key />First-Time Buyer</h3><p>Programs to make Bay Area homeownership real.</p><div><span className="program-tag">DPA</span><span className="program-tag">3% down</span><span className="program-tag">Blueprint</span></div></div>
+            <div className="program-card"><h3><Icons.CreditCard />Non-QM</h3><p>Self-employed, 1099, bank statements, foreign national.</p><div><span className="program-tag">Bank stmt</span><span className="program-tag">1099</span><span className="program-tag">Asset depletion</span></div></div>
+          </div>
+        </div>
+      </section>
 
-// ── App ──
-export default function App() {
-  return (
-    <div style={{ minHeight: "100vh", background: C.bg, color: C.text, fontFamily: FONT }}>
-      <style>{`
-        *, *::before, *::after { box-sizing: border-box; margin: 0; }
-        body { background: ${C.bg}; margin: 0; }
-        a:hover { opacity: 0.85; }
-        @media (max-width: 768px) {
-          .desktop-nav { display: none !important; }
-          .mobile-menu-btn { display: block !important; }
-        }
-        @media (min-width: 769px) {
-          .mobile-dropdown { display: none !important; }
-        }
-        html { scrollbar-width: thin; scrollbar-color: ${C.border} transparent; }
-        html::-webkit-scrollbar { width: 6px; }
-        html::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 3px; }
-      `}</style>
-      <ScrollToTop />
-      <Nav />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blueprint" element={<BlueprintPage />} />
-          <Route path="/pricepoint" element={<PricePointPage />} />
-          <Route path="/newsletter" element={<NewsletterPage />} />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-  );
+      {/* CALCULATOR */}
+      <section className="section" id="calculator" style={{textAlign:'center'}}>
+        <div className="container">
+          <div className="label">Mortgage Blueprint</div>
+          <h2 style={{fontSize:'2.4rem',margin:'16px 0'}}>The calculator that<br/>shows <span className="gradient" style={{background:'linear-gradient(135deg,var(--accent-bright),var(--teal))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>everything.</span></h2>
+          <p style={{color:'var(--text-secondary)',maxWidth:'500px',margin:'0 auto 32px'}}>Payment breakdown. Tax savings. Amortization. Side-by-side comparisons. The same tool I use with every client.</p>
+          <div className="btn-group" style={{justifyContent:'center',marginBottom:'48px'}}>
+            <a href={LINKS.blueprint} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Open in new tab &#8599;</a>
+            <a onClick={() => scrollTo('contact')} className="btn btn-accent" style={{cursor:'pointer'}}>Get a custom Blueprint &rarr;</a>
+          </div>
+        </div>
+        <div className="embed-placeholder">
+          <iframe src={LINKS.blueprint} title="Mortgage Blueprint" allow="clipboard-write" loading="lazy" />
+        </div>
+      </section>
+
+      {/* PRICEPOINT */}
+      <section className="section" id="pricepoint" style={{textAlign:'center',borderTop:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="label">PricePoint</div>
+          <h2 style={{fontSize:'2.4rem',margin:'16px 0'}}>Think you know<br/>Bay Area prices?</h2>
+          <p style={{color:'var(--text-secondary)',maxWidth:'460px',margin:'0 auto 48px'}}>Real homes. Real MLS data. Guess the price. Compete on leaderboards.</p>
+        </div>
+        <div className="embed-placeholder">
+          <iframe src={LINKS.pricepoint} title="PricePoint" allow="clipboard-write" loading="lazy" />
+        </div>
+      </section>
+
+      {/* FULL REVIEWS */}
+      <section className="section" id="reviews">
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Client Reviews</div>
+            <div className="glow-line"></div>
+            <h2>86+ five-star reviews.</h2>
+          </div>
+          <div className="stats-row" style={{marginBottom:'48px'}}>
+            <div><h3>5.0</h3><p>Yelp</p></div>
+            <div><h3>86+</h3><p>Reviews</p></div>
+            <div><h3>100%</h3><p>5-Star</p></div>
+            <div><h3>1K+</h3><p>Clients</p></div>
+          </div>
+          <div className="review-row">
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Buyer</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Incredible ability to connect people with products, even when other lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Homeowner</p><p className="review-source">Google</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Blueprint showed us exactly where every dollar was going. No surprises."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
+          </div>
+          <div className="review-row" style={{marginTop:'16px'}}>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"The only lender I trust with my clients. Communication is top-notch, tools are next-level."</p><div className="review-meta"><div className="review-avatar">SA</div><div><p className="review-author">SF Agent</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Closed our jumbo in under 3 weeks when our lender dropped the ball. Saved our purchase."</p><div className="review-meta"><div className="review-avatar">SB</div><div><p className="review-author">SF Buyer</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Refinance analysis saved us $400/mo. Showed exactly when we'd break even. No one else came close."</p><div className="review-meta"><div className="review-avatar">OH</div><div><p className="review-author">Oakland Homeowner</p><p className="review-source">Yelp</p></div></div></div>
+          </div>
+          <div style={{textAlign:'center',marginTop:'32px'}}>
+            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">See all reviews on Yelp &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      {/* NEWSLETTER */}
+      <section className="section" id="newsletter" style={{borderTop:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Newsletter</div>
+            <div className="glow-line"></div>
+            <h2>Three Point Thursday</h2>
+            <p>Rates, market data, and strategies — every Thursday morning.</p>
+          </div>
+          <div className="newsletter-card">
+            <h3 style={{fontSize:'1.2rem',fontWeight:'700',marginBottom:'12px',letterSpacing:'-0.02em'}}>Join hundreds of Bay Area pros</h3>
+            <p style={{color:'var(--text-secondary)',fontSize:'0.88rem',marginBottom:'24px'}}>Three actionable insights. One email. Every Thursday.</p>
+            <div style={{background:'var(--bg-base)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'24px',overflow:'hidden'}}>
+              <iframe src="https://chrisgranger.substack.com/embed" width="100%" height="150" style={{border:'none',background:'transparent'}} title="Subscribe to Three Point Thursday" loading="lazy" />
+            </div>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'16px',marginTop:'24px',textAlign:'left'}}>
+              <div style={{padding:'16px',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
+                <p style={{fontSize:'0.75rem',fontWeight:'700',marginBottom:'4px'}}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-1px',marginRight:'4px'}}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  Rate Check
+                </p>
+                <p style={{fontSize:'0.72rem',color:'var(--text-muted)'}}>Where rates are and where they're heading</p>
+              </div>
+              <div style={{padding:'16px',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
+                <p style={{fontSize:'0.75rem',fontWeight:'700',marginBottom:'4px'}}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-1px',marginRight:'4px'}}><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  Market Data
+                </p>
+                <p style={{fontSize:'0.72rem',color:'var(--text-muted)'}}>Analysis and trends that affect your wallet</p>
+              </div>
+              <div style={{padding:'16px',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
+                <p style={{fontSize:'0.75rem',fontWeight:'700',marginBottom:'4px'}}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-1px',marginRight:'4px'}}><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  Strategy
+                </p>
+                <p style={{fontSize:'0.72rem',color:'var(--text-muted)'}}>Actionable tips you can use this week</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AGENT RESOURCES */}
+      <section className="section" id="agents" style={{borderTop:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="section-header">
+            <div className="label">For Agents</div>
+            <div className="glow-line"></div>
+            <h2>Your clients deserve<br/>better lending.</h2>
+            <p>I built my business on agent partnerships. Here's how we work together.</p>
+          </div>
+          <div className="feature-grid">
+            <div className="feature-card"><div className="icon"><Icons.Blueprint /></div><h3>Blueprint for clients</h3><p>Custom scenarios. Full payment breakdown. Your buyers walk into offers informed.</p></div>
+            <div className="feature-card"><div className="icon"><Icons.Bolt /></div><h3>Fast pre-approvals</h3><p>Thorough review, not a rubber stamp. Listing agents trust my letters.</p></div>
+            <div className="feature-card"><div className="icon"><Icons.Phone /></div><h3>Real-time updates</h3><p>Proactive communication at every milestone. No chasing.</p></div>
+            <div className="feature-card"><div className="icon"><Icons.Star /></div><h3>PricePoint</h3><p>Use at open houses. Guests guess prices. Generates leads for both of us.</p></div>
+            <div className="feature-card"><div className="icon"><Icons.Users /></div><h3>30+ lenders</h3><p>More approvals, better rates, creative solutions. First-time to $3M+ jumbo.</p></div>
+            <div className="feature-card"><div className="icon"><Icons.Mail /></div><h3>TPT Newsletter</h3><p>Weekly talking points for buyer consultations. Stay sharp on rates.</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="section" id="contact" style={{borderTop:'1px solid var(--border)'}}>
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Get Started</div>
+            <div className="glow-line"></div>
+            <h2>Let's map out<br/>your loan.</h2>
+          </div>
+          <div className="contact-grid">
+            <div className="contact-side">
+              <div className="contact-card">
+                <h4>Phone</h4>
+                <a href={LINKS.phone}>(415) 987-8489</a>
+              </div>
+              <div className="contact-card">
+                <h4>Email</h4>
+                <a href={LINKS.email}>cgranger@xperthomelending.com</a>
+              </div>
+              <div className="contact-card">
+                <h4>Location</h4>
+                <p>Alameda & San Francisco, CA</p>
+              </div>
+              <div className="contact-card" style={{background:'linear-gradient(135deg,rgba(99,102,241,0.1),rgba(59,130,246,0.05))',borderColor:'rgba(99,102,241,0.2)'}}>
+                <h4 style={{color:'var(--accent-light)'}}>Schedule a Call</h4>
+                <p style={{marginBottom:'12px'}}>15-min discovery or 30-min deep dive.</p>
+                <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Open Calendly &rarr;</a>
+              </div>
+              <div className="contact-card">
+                <h4>Ready to Apply?</h4>
+                <p style={{marginBottom:'12px'}}>Secure loan origination via Arive.</p>
+                <a href={LINKS.arive} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Start Application</a>
+              </div>
+            </div>
+            <div className="contact-form-card">
+              <h3>Send a message</h3>
+              <div className="form-group">
+                <label className="form-label">Name *</label>
+                <input className="form-input" type="text" placeholder="Full name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Email *</label>
+                  <input className="form-input" type="email" placeholder="you@email.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Phone</label>
+                  <input className="form-input" type="tel" placeholder="(555) 123-4567" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+                </div>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Interested In</label>
+                <select className="form-select" value={formData.interest} onChange={e => setFormData({...formData, interest: e.target.value})}>
+                  <option>Buying a Home</option>
+                  <option>Refinancing</option>
+                  <option>Pre-Approval</option>
+                  <option>Investment Property</option>
+                  <option>Jumbo Loan</option>
+                  <option>First-Time Buyer</option>
+                  <option>Agent Partnership</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label className="form-label">Message</label>
+                <textarea className="form-textarea" placeholder="Tell me about your situation..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
+              </div>
+              <a href={`mailto:cgranger@xperthomelending.com?subject=${encodeURIComponent('Website Inquiry: ' + formData.interest)}&body=${encodeURIComponent('Name: ' + formData.name + '\nPhone: ' + formData.phone + '\n\n' + formData.message)}`} className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px'}}>Send Message &rarr;</a>
+              <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <div className="logo" style={{marginBottom:'4px'}}><div className="logo-mark">CG</div><span className="logo-text">Chris Granger</span></div>
+              <p>Bay Area mortgage broker. Alameda, San Francisco, and beyond. 1,000+ loans since 2012.</p>
+            </div>
+            <div>
+              <h4>Navigation</h4>
+              <ul className="footer-links">
+                <li><a onClick={() => scrollTo('about')} style={{cursor:'pointer'}}>About</a></li>
+                <li><a onClick={() => scrollTo('loans')} style={{cursor:'pointer'}}>Loan Programs</a></li>
+                <li><a onClick={() => scrollTo('calculator')} style={{cursor:'pointer'}}>Calculator</a></li>
+                <li><a onClick={() => scrollTo('pricepoint')} style={{cursor:'pointer'}}>PricePoint</a></li>
+                <li><a onClick={() => scrollTo('reviews')} style={{cursor:'pointer'}}>Reviews</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Resources</h4>
+              <ul className="footer-links">
+                <li><a onClick={() => scrollTo('newsletter')} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
+                <li><a onClick={() => scrollTo('agents')} style={{cursor:'pointer'}}>Agent Resources</a></li>
+                <li><a onClick={() => scrollTo('contact')} style={{cursor:'pointer'}}>Contact</a></li>
+                <li><a href={LINKS.calendly} target="_blank" rel="noopener noreferrer">Calendly</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Connect</h4>
+              <ul className="footer-links">
+                <li><a href={LINKS.phone}>(415) 987-8489</a></li>
+                <li><a href={LINKS.email}>cgranger@xperthomelending.com</a></li>
+                <li style={{marginTop:'6px'}}>
+                  <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" style={{marginRight:'10px'}}>Yelp</a>
+                  <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" style={{marginRight:'10px'}}>LinkedIn</a>
+                  <a href={LINKS.substack} target="_blank" rel="noopener noreferrer">Substack</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <span>&copy; 2026 Chris Granger &middot; Xpert Home Lending</span>
+            <span style={{fontFamily:'var(--mono)'}}>NMLS #952015</span>
+          </div>
+          <div className="footer-legal">Licensed mortgage broker (NMLS #952015) operating through Xpert Home Lending, Inc. Licensed in CA, OR, WA, NV, AZ, CO, HI, TX. All loans subject to credit approval. Equal Housing Lender.</div>
+        </div>
+      </footer>
+    </>
+  )
 }

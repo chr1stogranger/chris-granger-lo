@@ -3,9 +3,9 @@ import { useState } from 'react'
 const LINKS = {
   blueprint: 'https://mortgage-blueprint.vercel.app?theme=dark',
   pricepoint: 'https://mortgage-blueprint.vercel.app?mode=pricepoint&theme=dark',
-  calendly: 'https://calendly.com/cgranger-xperthomelending/30min',
+  calendly: 'https://calendly.com/chrisgranger',
   substack: 'https://chrisgranger.substack.com',
-  arive: 'https://apply.arivehq.io/chris-granger',
+  apply: 'https://2179191.my1003app.com/952015/register',
   email: 'mailto:cgranger@xperthomelending.com',
   phone: 'tel:4159878489',
   yelp: 'https://www.yelp.com/biz/chris-granger-xpert-home-lending-alameda',
@@ -72,7 +72,7 @@ export default function App() {
             {['about','loans','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
               <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id}</a>
             ))}
-            <a href={LINKS.arive} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
+            <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
           </div>
         )}
       </header>
@@ -382,8 +382,8 @@ export default function App() {
               </div>
               <div className="contact-card">
                 <h4>Ready to Apply?</h4>
-                <p style={{marginBottom:'12px'}}>Secure loan origination via Arive.</p>
-                <a href={LINKS.arive} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Start Application</a>
+                <p style={{marginBottom:'12px'}}>Secure online loan application.</p>
+                <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Start Application</a>
               </div>
             </div>
             <div className="contact-form-card">

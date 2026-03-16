@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 const LINKS = {
-  blueprint: 'https://mortgage-blueprint.vercel.app',
-  pricepoint: 'https://mortgage-blueprint.vercel.app?mode=pricepoint',
+  blueprint: 'https://mortgage-blueprint.vercel.app?theme=dark',
+  pricepoint: 'https://mortgage-blueprint.vercel.app?mode=pricepoint&theme=dark',
   calendly: 'https://calendly.com/cgranger-xperthomelending/30min',
   substack: 'https://chrisgranger.substack.com',
   arive: 'https://apply.arivehq.io/chris-granger',

@@ -10,6 +10,8 @@ const LINKS = {
   phone: 'tel:4159878489',
   yelp: 'https://www.yelp.com/biz/chris-granger-xpert-home-lending-san-francisco-2',
   google: 'https://www.google.com/maps/place/Chris+Granger+-+Xpert+Home+Lending/@37.7737537,-122.2764211,17z/data=!4m8!3m7!1s0x808f81f3a067ec4d:0x41aad9cf5c9a7c9f!8m2!3d37.7737537!4d-122.2764211!9m1!1b1!16s%2Fg%2F11h5s4x2qy',
+  experience: 'https://www.experience.com/reviews/chris-granger',
+  zillow: 'https://www.zillow.com/lender-profile/chr1stogranger/',
   linkedin: 'https://www.linkedin.com/in/christogranger/',
 }
 
@@ -95,7 +97,7 @@ export default function App() {
             <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call &rarr;</a>
           </div>
           <div className="hero-badges">
-            <div className="hero-chip"><div className="dot"></div>86 Five-Star Reviews</div>
+            <div className="hero-chip"><div className="dot"></div>290+ Five-Star Reviews</div>
             <div className="hero-chip"><div className="dot" style={{background:'var(--amber)'}}></div>Best Broker, Alameda</div>
             <div className="hero-chip"><div className="dot" style={{background:'var(--blue)'}}></div>1,000+ Loans Closed</div>
           </div>
@@ -169,7 +171,7 @@ export default function App() {
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Chris possesses an incredible ability to connect people with outstanding products, even when other mortgage lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Bay Area Homeowner</p><p className="review-source">Google</p></div></div></div>
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His Blueprint tool showed us exactly where every dollar was going — no surprises at closing. AMAZING experience."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
           </div>
-          <div style={{textAlign:'center',marginTop:'32px'}}><a onClick={() => scrollTo('reviews')} className="btn btn-secondary" style={{cursor:'pointer'}}>Read all 86+ reviews &rarr;</a></div>
+          <div style={{textAlign:'center',marginTop:'32px'}}><a onClick={() => scrollTo('reviews')} className="btn btn-secondary" style={{cursor:'pointer'}}>Read all 290+ reviews &rarr;</a></div>
         </div>
       </section>
 
@@ -268,11 +270,11 @@ export default function App() {
           <div className="section-header">
             <div className="label">Client Reviews</div>
             <div className="glow-line"></div>
-            <h2>86+ five-star reviews.</h2>
+            <h2>290+ five-star reviews.</h2>
           </div>
           <div className="stats-row" style={{marginBottom:'48px'}}>
-            <div><h3>5.0</h3><p>Yelp</p></div>
-            <div><h3>86+</h3><p>Reviews</p></div>
+            <div><h3>5.0</h3><p>Rating</p></div>
+            <div><h3>290+</h3><p>Reviews</p></div>
             <div><h3>100%</h3><p>5-Star</p></div>
             <div><h3>1K+</h3><p>Clients</p></div>
           </div>
@@ -287,8 +289,10 @@ export default function App() {
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Refinance analysis saved us $400/mo. Showed exactly when we'd break even. No one else came close."</p><div className="review-meta"><div className="review-avatar">OH</div><div><p className="review-author">Oakland Homeowner</p><p className="review-source">Yelp</p></div></div></div>
           </div>
           <div style={{textAlign:'center',marginTop:'32px',display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'}}>
-            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Read reviews on Yelp &rarr;</a>
-            <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Read reviews on Google &rarr;</a>
+            <a href={LINKS.experience} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">All 290+ reviews &rarr;</a>
+            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Yelp &rarr;</a>
+            <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Google &rarr;</a>
+            <a href={LINKS.zillow} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Zillow &rarr;</a>
           </div>
         </div>
       </section>

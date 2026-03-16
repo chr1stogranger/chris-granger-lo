@@ -8,7 +8,8 @@ const LINKS = {
   apply: 'https://2179191.my1003app.com/952015/register',
   email: 'mailto:cgranger@xperthomelending.com',
   phone: 'tel:4159878489',
-  yelp: 'https://www.yelp.com/biz/chris-granger-xpert-home-lending-alameda',
+  yelp: 'https://www.yelp.com/biz/chris-granger-xpert-home-lending-san-francisco-2',
+  google: 'https://www.google.com/maps/place/Chris+Granger+-+Xpert+Home+Lending/@37.7737537,-122.2764211,17z/data=!4m8!3m7!1s0x808f81f3a067ec4d:0x41aad9cf5c9a7c9f!8m2!3d37.7737537!4d-122.2764211!9m1!1b1!16s%2Fg%2F11h5s4x2qy',
   linkedin: 'https://www.linkedin.com/in/christogranger/',
 }
 
@@ -285,8 +286,9 @@ export default function App() {
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Closed our jumbo in under 3 weeks when our lender dropped the ball. Saved our purchase."</p><div className="review-meta"><div className="review-avatar">SB</div><div><p className="review-author">SF Buyer</p><p className="review-source">Yelp</p></div></div></div>
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Refinance analysis saved us $400/mo. Showed exactly when we'd break even. No one else came close."</p><div className="review-meta"><div className="review-avatar">OH</div><div><p className="review-author">Oakland Homeowner</p><p className="review-source">Yelp</p></div></div></div>
           </div>
-          <div style={{textAlign:'center',marginTop:'32px'}}>
-            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">See all reviews on Yelp &rarr;</a>
+          <div style={{textAlign:'center',marginTop:'32px',display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'}}>
+            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Read reviews on Yelp &rarr;</a>
+            <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Read reviews on Google &rarr;</a>
           </div>
         </div>
       </section>
@@ -459,6 +461,7 @@ export default function App() {
                 <li><a href={LINKS.email}>cgranger@xperthomelending.com</a></li>
                 <li style={{marginTop:'6px'}}>
                   <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" style={{marginRight:'10px'}}>Yelp</a>
+                  <a href={LINKS.google} target="_blank" rel="noopener noreferrer" style={{marginRight:'10px'}}>Google</a>
                   <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" style={{marginRight:'10px'}}>LinkedIn</a>
                   <a href={LINKS.substack} target="_blank" rel="noopener noreferrer">Substack</a>
                 </li>

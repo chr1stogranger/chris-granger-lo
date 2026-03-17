@@ -84,7 +84,12 @@ export default function App() {
             <a onClick={() => scrollTo('agents')}>Agents</a>
             <a onClick={() => scrollTo('contact')} className="nav-cta">Get Started</a>
           </nav>
-          <button className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
+          >
             {mobileMenuOpen ? <Icons.Close /> : <Icons.Menu />}
           </button>
         </div>
@@ -413,22 +418,22 @@ export default function App() {
             <div className="contact-form-card">
               <h3>Send a message</h3>
               <div className="form-group">
-                <label className="form-label">Name *</label>
-                <input className="form-input" type="text" placeholder="Full name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
+                <label className="form-label" htmlFor="contact-name">Name *</label>
+                <input id="contact-name" className="form-input" type="text" placeholder="Full name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} required />
               </div>
               <div className="form-row">
                 <div className="form-group">
-                  <label className="form-label">Email *</label>
-                  <input className="form-input" type="email" placeholder="you@email.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
+                  <label className="form-label" htmlFor="contact-email">Email *</label>
+                  <input id="contact-email" className="form-input" type="email" placeholder="you@email.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required />
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Phone</label>
-                  <input className="form-input" type="tel" placeholder="(555) 123-4567" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+                  <label className="form-label" htmlFor="contact-phone">Phone</label>
+                  <input id="contact-phone" className="form-input" type="tel" placeholder="(555) 123-4567" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                 </div>
               </div>
               <div className="form-group">
-                <label className="form-label">Interested In</label>
-                <select className="form-select" value={formData.interest} onChange={e => setFormData({...formData, interest: e.target.value})}>
+                <label className="form-label" htmlFor="contact-interest">Interested In</label>
+                <select id="contact-interest" className="form-select" value={formData.interest} onChange={e => setFormData({...formData, interest: e.target.value})}>
                   <option>Buying a Home</option>
                   <option>Refinancing</option>
                   <option>Pre-Approval</option>
@@ -439,8 +444,8 @@ export default function App() {
                 </select>
               </div>
               <div className="form-group">
-                <label className="form-label">Message</label>
-                <textarea className="form-textarea" placeholder="Tell me about your situation..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
+                <label className="form-label" htmlFor="contact-message">Message</label>
+                <textarea id="contact-message" className="form-textarea" placeholder="Tell me about your situation..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
               </div>
               <a href={`mailto:cgranger@xperthomelending.com?subject=${encodeURIComponent('Website Inquiry: ' + formData.interest)}&body=${encodeURIComponent('Name: ' + formData.name + '\nPhone: ' + formData.phone + '\n\n' + formData.message)}`} className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px'}}>Send Message &rarr;</a>
               <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>

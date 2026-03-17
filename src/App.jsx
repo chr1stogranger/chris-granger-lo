@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 const LINKS = {
-  blueprint: 'https://mortgage-blueprint.vercel.app?theme=dark',
-  pricepoint: 'https://mortgage-blueprint.vercel.app?mode=pricepoint&theme=dark',
+  blueprint: 'https://blueprint.realstack.app?theme=dark',
+  pricepoint: 'https://blueprint.realstack.app?mode=pricepoint&theme=dark',
   calendly: 'https://calendly.com/chrisgranger',
   substack: 'https://chrisgranger.substack.com',
   apply: 'https://2179191.my1003app.com/952015/register',
@@ -39,6 +39,27 @@ const Icons = {
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '' })
+  const [formStatus, setFormStatus] = useState(null) // null | 'sending' | 'success' | 'error'
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (!formData.name || !formData.email) return setFormStatus('error')
+    setFormStatus('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '' })
+      } else {
+        setFormStatus('error')
+      }
+    } catch { setFormStatus('error') }
+    setTimeout(() => setFormStatus(null), 5000)
+  }
 
   const scrollTo = (id) => {
     setMobileMenuOpen(false)
@@ -415,7 +436,7 @@ export default function App() {
                 <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Start Application</a>
               </div>
             </div>
-            <div className="contact-form-card">
+            <form className="contact-form-card" onSubmit={handleSubmit}>
               <h3>Send a message</h3>
               <div className="form-group">
                 <label className="form-label" htmlFor="contact-name">Name *</label>
@@ -447,9 +468,13 @@ export default function App() {
                 <label className="form-label" htmlFor="contact-message">Message</label>
                 <textarea id="contact-message" className="form-textarea" placeholder="Tell me about your situation..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
               </div>
-              <a href={`mailto:cgranger@xperthomelending.com?subject=${encodeURIComponent('Website Inquiry: ' + formData.interest)}&body=${encodeURIComponent('Name: ' + formData.name + '\nPhone: ' + formData.phone + '\n\n' + formData.message)}`} className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px'}}>Send Message &rarr;</a>
-              <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>
-            </div>
+              <button type="submit" className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px',border:'none',cursor:'pointer'}} disabled={formStatus === 'sending'}>
+                {formStatus === 'sending' ? 'Sending...' : 'Send Message \u2192'}
+              </button>
+              {formStatus === 'success' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#10B981',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
+              {formStatus === 'error' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>Something went wrong. Please try again or email me directly.</p>}
+              {!formStatus && <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>}
+            </form>
           </div>
         </div>
       </section>

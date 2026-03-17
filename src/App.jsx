@@ -51,7 +51,25 @@ export default function App() {
       <header className="header">
         <div className="container">
           <div className="logo" onClick={() => scrollTo('hero')}>
-            <div className="logo-mark">CG</div>
+            <svg viewBox="0 0 100 100" fill="none" style={{width:32,height:32,borderRadius:7,overflow:'hidden',flexShrink:0}}>
+              <defs><linearGradient id="rs-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#6366F1"/><stop offset="100%" stopColor="#3B82F6"/></linearGradient></defs>
+              <rect width="100" height="100" fill="url(#rs-bg)"/>
+              <polygon points="50,4 8,22 50,17 92,22" fill="rgba(255,255,255,0.95)"/>
+              <polygon points="50,17 92,22 92,26 50,21" fill="rgba(255,255,255,0.48)"/>
+              <polygon points="50,17 8,22 8,26 50,21" fill="rgba(255,255,255,0.68)"/>
+              <polygon points="8,30 50,25 92,30 50,35" fill="rgba(255,255,255,0.90)"/>
+              <polygon points="8,30 50,35 50,38 8,33" fill="rgba(255,255,255,0.58)"/>
+              <polygon points="50,35 92,30 92,33 50,38" fill="rgba(255,255,255,0.40)"/>
+              <polygon points="8,44 50,39 92,44 50,49" fill="rgba(255,255,255,0.70)"/>
+              <polygon points="8,44 50,49 50,52 8,47" fill="rgba(255,255,255,0.45)"/>
+              <polygon points="50,49 92,44 92,47 50,52" fill="rgba(255,255,255,0.28)"/>
+              <polygon points="8,58 50,53 92,58 50,63" fill="rgba(255,255,255,0.50)"/>
+              <polygon points="8,58 50,63 50,66 8,61" fill="rgba(255,255,255,0.32)"/>
+              <polygon points="50,63 92,58 92,61 50,66" fill="rgba(255,255,255,0.18)"/>
+              <polygon points="8,72 50,67 92,72 50,77" fill="rgba(255,255,255,0.34)"/>
+              <polygon points="8,72 50,77 50,80 8,75" fill="rgba(255,255,255,0.20)"/>
+              <polygon points="50,77 92,72 92,75 50,80" fill="rgba(255,255,255,0.10)"/>
+            </svg>
             <span className="logo-text">Chris Granger</span>
             <span className="logo-divider">/</span>
             <span className="logo-sub">Mortgage</span>
@@ -436,7 +454,28 @@ export default function App() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <div className="logo" style={{marginBottom:'4px'}}><div className="logo-mark">CG</div><span className="logo-text">Chris Granger</span></div>
+              <div className="logo" style={{marginBottom:'4px'}}>
+                <svg viewBox="0 0 100 100" fill="none" style={{width:28,height:28,borderRadius:6,overflow:'hidden',flexShrink:0}}>
+                  <defs><linearGradient id="rs-bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#6366F1"/><stop offset="100%" stopColor="#3B82F6"/></linearGradient></defs>
+                  <rect width="100" height="100" fill="url(#rs-bg2)"/>
+                  <polygon points="50,4 8,22 50,17 92,22" fill="rgba(255,255,255,0.95)"/>
+                  <polygon points="50,17 92,22 92,26 50,21" fill="rgba(255,255,255,0.48)"/>
+                  <polygon points="50,17 8,22 8,26 50,21" fill="rgba(255,255,255,0.68)"/>
+                  <polygon points="8,30 50,25 92,30 50,35" fill="rgba(255,255,255,0.90)"/>
+                  <polygon points="8,30 50,35 50,38 8,33" fill="rgba(255,255,255,0.58)"/>
+                  <polygon points="50,35 92,30 92,33 50,38" fill="rgba(255,255,255,0.40)"/>
+                  <polygon points="8,44 50,39 92,44 50,49" fill="rgba(255,255,255,0.70)"/>
+                  <polygon points="8,44 50,49 50,52 8,47" fill="rgba(255,255,255,0.45)"/>
+                  <polygon points="50,49 92,44 92,47 50,52" fill="rgba(255,255,255,0.28)"/>
+                  <polygon points="8,58 50,53 92,58 50,63" fill="rgba(255,255,255,0.50)"/>
+                  <polygon points="8,58 50,63 50,66 8,61" fill="rgba(255,255,255,0.32)"/>
+                  <polygon points="50,63 92,58 92,61 50,66" fill="rgba(255,255,255,0.18)"/>
+                  <polygon points="8,72 50,67 92,72 50,77" fill="rgba(255,255,255,0.34)"/>
+                  <polygon points="8,72 50,77 50,80 8,75" fill="rgba(255,255,255,0.20)"/>
+                  <polygon points="50,77 92,72 92,75 50,80" fill="rgba(255,255,255,0.10)"/>
+                </svg>
+                <span className="logo-text">Chris Granger</span>
+              </div>
               <p>Bay Area mortgage broker. Alameda, San Francisco, and beyond. 1,000+ loans since 2012.</p>
             </div>
             <div>

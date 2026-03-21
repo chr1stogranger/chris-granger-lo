@@ -98,6 +98,7 @@ export default function App() {
           <nav className="nav">
             <a onClick={() => scrollTo('about')}>About</a>
             <a onClick={() => scrollTo('loans')}>Programs</a>
+            <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
             <a onClick={() => scrollTo('calculator')}>Calculator</a>
             <a onClick={() => scrollTo('pricepoint')}>PricePoint</a>
             <a onClick={() => scrollTo('reviews')}>Reviews</a>
@@ -119,6 +120,7 @@ export default function App() {
             {['about','loans','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
               <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id}</a>
             ))}
+            <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
             <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
           </div>
         )}
@@ -521,6 +523,7 @@ export default function App() {
             <div>
               <h4>Resources</h4>
               <ul className="footer-links">
+                <li><a href="/learn/" style={{color:'var(--accent-light)'}}>Mortgage Education</a></li>
                 <li><a onClick={() => scrollTo('newsletter')} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
                 <li><a onClick={() => scrollTo('agents')} style={{cursor:'pointer'}}>Agent Resources</a></li>
                 <li><a onClick={() => scrollTo('contact')} style={{cursor:'pointer'}}>Contact</a></li>

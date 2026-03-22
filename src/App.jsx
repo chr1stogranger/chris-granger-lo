@@ -98,7 +98,6 @@ export default function App() {
           <nav className="nav">
             <a onClick={() => scrollTo('about')}>About</a>
             <a onClick={() => scrollTo('loans')}>Programs</a>
-            <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
             <a onClick={() => scrollTo('calculator')}>Calculator</a>
             <a onClick={() => scrollTo('pricepoint')}>PricePoint</a>
             <a onClick={() => scrollTo('reviews')}>Reviews</a>
@@ -120,7 +119,6 @@ export default function App() {
             {['about','loans','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
               <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id}</a>
             ))}
-            <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
             <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
           </div>
         )}
@@ -354,7 +352,8 @@ export default function App() {
           </div>
           <div className="newsletter-card">
             <h3 style={{fontSize:'1.2rem',fontWeight:'700',marginBottom:'12px',letterSpacing:'-0.02em'}}>Join hundreds of Bay Area pros</h3>
-            <p style={{color:'var(--text-secondary)',fontSize:'0.88rem',marginBottom:'24px'}}>Three actionable insights. One email. Every Thursday.</p>
+            <p style={{color:'var(--text-secondary)',fontSize:'0.88rem',marginBottom:'8px'}}>Three actionable insights. One email. Every Thursday.</p>
+            <p style={{fontSize:'0.8rem',color:'var(--text-muted)',marginBottom:'24px'}}>Want to go deeper? <a href="/learn/" target="_blank" rel="noopener noreferrer" style={{color:'var(--text-secondary)',textDecoration:'underline',textUnderlineOffset:'3px'}}>Read the mortgage education blog &rarr;</a></p>
             <div style={{background:'var(--bg-base)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'24px',overflow:'hidden'}}>
               <iframe src="https://chrisgranger.substack.com/embed" width="100%" height="150" style={{border:'none',background:'transparent'}} title="Subscribe to Three Point Thursday" loading="lazy" />
             </div>
@@ -523,7 +522,7 @@ export default function App() {
             <div>
               <h4>Resources</h4>
               <ul className="footer-links">
-                <li><a href="/learn/" style={{color:'var(--accent-light)'}}>Mortgage Education</a></li>
+                <li><a href="/learn/" target="_blank" rel="noopener noreferrer">Mortgage Education</a></li>
                 <li><a onClick={() => scrollTo('newsletter')} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
                 <li><a onClick={() => scrollTo('agents')} style={{cursor:'pointer'}}>Agent Resources</a></li>
                 <li><a onClick={() => scrollTo('contact')} style={{cursor:'pointer'}}>Contact</a></li>

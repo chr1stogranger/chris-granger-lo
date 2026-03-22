@@ -202,22 +202,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS PREVIEW */}
-      <section className="section" style={{borderTop:'1px solid var(--border)'}}>
-        <div className="container">
-          <div className="section-header">
-            <div className="label">Reviews</div>
-            <div className="glow-line"></div>
-            <h2>What clients say</h2>
-          </div>
-          <div className="review-row">
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step. We never felt lost or confused."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Homebuyer</p><p className="review-source">Yelp</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Chris possesses an incredible ability to connect people with outstanding products, even when other mortgage lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Bay Area Homeowner</p><p className="review-source">Google</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His Blueprint tool showed us exactly where every dollar was going — no surprises at closing. AMAZING experience."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
-          </div>
-          <div style={{textAlign:'center',marginTop:'32px'}}><a onClick={() => scrollTo('reviews')} className="btn btn-secondary" style={{cursor:'pointer'}}>Read all 290+ reviews &rarr;</a></div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="cta-section">
@@ -236,7 +220,7 @@ export default function App() {
       <section className="section" id="about">
         <div className="container">
           <div className="about-grid-v3">
-            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',overflow:'hidden'}}>
+            <div style={{aspectRatio:'4/5',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',overflow:'hidden'}}>
               <img src="/christo.webp" alt="Chris Granger — Mortgage Broker" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} onError={e => { e.target.style.display='none'; e.target.parentElement.style.display='flex'; e.target.parentElement.style.alignItems='center'; e.target.parentElement.style.justifyContent='center'; }} />
             </div>
             <div>

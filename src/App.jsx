@@ -205,6 +205,39 @@ export default function App() {
       </section>
 
 
+      {/* FULL REVIEWS */}
+      <section className="section" id="reviews">
+        <div className="container">
+          <div className="section-header">
+            <div className="label">Client Reviews</div>
+            <div className="glow-line"></div>
+            <h2>290+ five-star reviews.</h2>
+          </div>
+          <div className="stats-row" style={{marginBottom:'48px'}}>
+            <div><h3>5.0</h3><p>Rating</p></div>
+            <div><h3>290+</h3><p>Reviews</p></div>
+            <div><h3>100%</h3><p>5-Star</p></div>
+            <div><h3>1K+</h3><p>Clients</p></div>
+          </div>
+          <div className="review-row">
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Buyer</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Incredible ability to connect people with products, even when other lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Homeowner</p><p className="review-source">Google</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Blueprint showed us exactly where every dollar was going. No surprises."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
+          </div>
+          <div className="review-row" style={{marginTop:'16px'}}>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"The only lender I trust with my clients. Communication is top-notch, tools are next-level."</p><div className="review-meta"><div className="review-avatar">SA</div><div><p className="review-author">SF Agent</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Closed our jumbo in under 3 weeks when our lender dropped the ball. Saved our purchase."</p><div className="review-meta"><div className="review-avatar">SB</div><div><p className="review-author">SF Buyer</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Refinance analysis saved us $400/mo. Showed exactly when we'd break even. No one else came close."</p><div className="review-meta"><div className="review-avatar">OH</div><div><p className="review-author">Oakland Homeowner</p><p className="review-source">Yelp</p></div></div></div>
+          </div>
+          <div style={{textAlign:'center',marginTop:'32px',display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'}}>
+            <a href={LINKS.experience} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">All 290+ reviews &rarr;</a>
+            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Yelp &rarr;</a>
+            <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Google &rarr;</a>
+            <a href={LINKS.zillow} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Zillow &rarr;</a>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="cta-section">
         <div className="aurora"></div>
@@ -291,39 +324,6 @@ export default function App() {
         </div>
         <div className="embed-placeholder">
           <iframe src={LINKS.pricepoint} title="PricePoint" allow="clipboard-write" loading="lazy" />
-        </div>
-      </section>
-
-      {/* FULL REVIEWS */}
-      <section className="section" id="reviews">
-        <div className="container">
-          <div className="section-header">
-            <div className="label">Client Reviews</div>
-            <div className="glow-line"></div>
-            <h2>290+ five-star reviews.</h2>
-          </div>
-          <div className="stats-row" style={{marginBottom:'48px'}}>
-            <div><h3>5.0</h3><p>Rating</p></div>
-            <div><h3>290+</h3><p>Reviews</p></div>
-            <div><h3>100%</h3><p>5-Star</p></div>
-            <div><h3>1K+</h3><p>Clients</p></div>
-          </div>
-          <div className="review-row">
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Buyer</p><p className="review-source">Yelp</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Incredible ability to connect people with products, even when other lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Homeowner</p><p className="review-source">Google</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Blueprint showed us exactly where every dollar was going. No surprises."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
-          </div>
-          <div className="review-row" style={{marginTop:'16px'}}>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"The only lender I trust with my clients. Communication is top-notch, tools are next-level."</p><div className="review-meta"><div className="review-avatar">SA</div><div><p className="review-author">SF Agent</p><p className="review-source">Yelp</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Closed our jumbo in under 3 weeks when our lender dropped the ball. Saved our purchase."</p><div className="review-meta"><div className="review-avatar">SB</div><div><p className="review-author">SF Buyer</p><p className="review-source">Yelp</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Refinance analysis saved us $400/mo. Showed exactly when we'd break even. No one else came close."</p><div className="review-meta"><div className="review-avatar">OH</div><div><p className="review-author">Oakland Homeowner</p><p className="review-source">Yelp</p></div></div></div>
-          </div>
-          <div style={{textAlign:'center',marginTop:'32px',display:'flex',gap:'12px',justifyContent:'center',flexWrap:'wrap'}}>
-            <a href={LINKS.experience} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">All 290+ reviews &rarr;</a>
-            <a href={LINKS.yelp} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Yelp &rarr;</a>
-            <a href={LINKS.google} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Google &rarr;</a>
-            <a href={LINKS.zillow} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Zillow &rarr;</a>
-          </div>
         </div>
       </section>
 

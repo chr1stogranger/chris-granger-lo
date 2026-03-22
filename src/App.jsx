@@ -98,6 +98,7 @@ export default function App() {
           <nav className="nav">
             <a onClick={() => scrollTo('about')}>About</a>
             <a onClick={() => scrollTo('loans')}>Programs</a>
+            <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
             <a onClick={() => scrollTo('calculator')}>Calculator</a>
             <a onClick={() => scrollTo('pricepoint')}>PricePoint</a>
             <a onClick={() => scrollTo('reviews')}>Reviews</a>
@@ -119,6 +120,7 @@ export default function App() {
             {['about','loans','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
               <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id}</a>
             ))}
+            <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
             <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
           </div>
         )}
@@ -177,12 +179,6 @@ export default function App() {
               <a onClick={() => scrollTo('calculator')} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
             </div>
             <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(59,130,246,0.08)'}}><Icons.Bolt /></div>
-              <h3>Fast Closings</h3>
-              <p>Conventional loans in 2 weeks. Jumbo loans in 18 days. Time kills deals — I move fast when it matters most.</p>
-              <a onClick={() => scrollTo('contact')} className="card-link" style={{cursor:'pointer'}}>Work with me &rarr;</a>
-            </div>
-            <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(6,182,212,0.08)'}}><Icons.Target /></div>
               <h3>Full Transparency</h3>
               <p>Every fee, every cost, every dollar — matching your official Loan Estimate. No surprises at closing.</p>
@@ -197,6 +193,12 @@ export default function App() {
               <h3>PricePoint</h3>
               <p>A game that tests your real estate instincts with real MLS data. City leaderboards. Built for fun.</p>
               <a onClick={() => scrollTo('pricepoint')} className="card-link" style={{cursor:'pointer'}}>Play now &rarr;</a>
+            </div>
+            <div className="bento-item">
+              <div className="bento-icon" style={{background:'rgba(139,92,246,0.08)'}}><Icons.Mail /></div>
+              <h3>Three Point Thursday</h3>
+              <p>Weekly newsletter: rates, market data, and strategies. Hundreds of Bay Area professionals read it every Thursday.</p>
+              <a onClick={() => scrollTo('newsletter')} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
             </div>
           </div>
         </div>
@@ -220,8 +222,8 @@ export default function App() {
       <section className="section" id="about">
         <div className="container">
           <div className="about-grid-v3">
-            <div style={{aspectRatio:'4/5',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',overflow:'hidden'}}>
-              <img src="/christo.webp" alt="Chris Granger — Mortgage Broker" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} onError={e => { e.target.style.display='none'; e.target.parentElement.style.display='flex'; e.target.parentElement.style.alignItems='center'; e.target.parentElement.style.justifyContent='center'; }} />
+            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+              <Icons.Person />
             </div>
             <div>
               <div className="label">About</div>
@@ -336,8 +338,7 @@ export default function App() {
           </div>
           <div className="newsletter-card">
             <h3 style={{fontSize:'1.2rem',fontWeight:'700',marginBottom:'12px',letterSpacing:'-0.02em'}}>Join hundreds of Bay Area pros</h3>
-            <p style={{color:'var(--text-secondary)',fontSize:'0.88rem',marginBottom:'8px'}}>Three actionable insights. One email. Every Thursday.</p>
-            <p style={{fontSize:'0.8rem',color:'var(--text-muted)',marginBottom:'24px'}}>Want to go deeper? <a href="/learn/" target="_blank" rel="noopener noreferrer" style={{color:'var(--text-secondary)',textDecoration:'underline',textUnderlineOffset:'3px'}}>Read the mortgage education blog &rarr;</a></p>
+            <p style={{color:'var(--text-secondary)',fontSize:'0.88rem',marginBottom:'24px'}}>Three actionable insights. One email. Every Thursday.</p>
             <div style={{background:'var(--bg-base)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'24px',overflow:'hidden'}}>
               <iframe src="https://chrisgranger.substack.com/embed" width="100%" height="150" style={{border:'none',background:'transparent'}} title="Subscribe to Three Point Thursday" loading="lazy" />
             </div>
@@ -506,7 +507,7 @@ export default function App() {
             <div>
               <h4>Resources</h4>
               <ul className="footer-links">
-                <li><a href="/learn/" target="_blank" rel="noopener noreferrer">Mortgage Education</a></li>
+                <li><a href="/learn/" style={{color:'var(--accent-light)'}}>Mortgage Education</a></li>
                 <li><a onClick={() => scrollTo('newsletter')} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
                 <li><a onClick={() => scrollTo('agents')} style={{cursor:'pointer'}}>Agent Resources</a></li>
                 <li><a onClick={() => scrollTo('contact')} style={{cursor:'pointer'}}>Contact</a></li>
@@ -535,9 +536,9 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating Apply Now CTA — always visible */}
+      {/* Floating Calendly CTA — always visible */}
       <a
-        href={LINKS.apply}
+        href={LINKS.calendly}
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -552,12 +553,12 @@ export default function App() {
         }}
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(99,102,241,0.5)'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 20px rgba(99,102,241,0.4)'; }}
-        aria-label="Apply now for a mortgage"
+        aria-label="Book a call with Chris Granger"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/>
+          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
         </svg>
-        Apply Now
+        Book a Call
       </a>
     </>
   )

@@ -200,12 +200,6 @@ export default function App() {
               <p>A game that tests your real estate instincts with real MLS data. City leaderboards. Built for fun.</p>
               <a onClick={() => scrollTo('pricepoint')} className="card-link" style={{cursor:'pointer'}}>Play now &rarr;</a>
             </div>
-            <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(139,92,246,0.08)'}}><Icons.Mail /></div>
-              <h3>Three Point Thursday</h3>
-              <p>Weekly newsletter: rates, market data, and strategies. Hundreds of Bay Area professionals read it every Thursday.</p>
-              <a onClick={() => scrollTo('newsletter')} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
-            </div>
           </div>
         </div>
       </section>

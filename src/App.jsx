@@ -179,6 +179,12 @@ export default function App() {
               <a onClick={() => scrollTo('calculator')} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
             </div>
             <div className="bento-item">
+              <div className="bento-icon" style={{background:'rgba(59,130,246,0.08)'}}><Icons.Bolt /></div>
+              <h3>Fast Closings</h3>
+              <p>Conventional loans in 2 weeks. Jumbo loans in 18 days. Time kills deals — I move fast when it matters most.</p>
+              <a onClick={() => scrollTo('contact')} className="card-link" style={{cursor:'pointer'}}>Work with me &rarr;</a>
+            </div>
+            <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(6,182,212,0.08)'}}><Icons.Target /></div>
               <h3>Full Transparency</h3>
               <p>Every fee, every cost, every dollar — matching your official Loan Estimate. No surprises at closing.</p>
@@ -200,12 +206,6 @@ export default function App() {
               <p>Weekly newsletter: rates, market data, and strategies. Hundreds of Bay Area professionals read it every Thursday.</p>
               <a onClick={() => scrollTo('newsletter')} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
             </div>
-            <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(59,130,246,0.08)'}}><Icons.Bolt /></div>
-              <h3>Fast Closings</h3>
-              <p>Jumbo in 3 weeks. Purchase contingency met. Time kills deals — I move fast when it matters most.</p>
-              <a onClick={() => scrollTo('contact')} className="card-link" style={{cursor:'pointer'}}>Work with me &rarr;</a>
-            </div>
           </div>
         </div>
       </section>
@@ -222,7 +222,6 @@ export default function App() {
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step. We never felt lost or confused."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Homebuyer</p><p className="review-source">Yelp</p></div></div></div>
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"Chris possesses an incredible ability to connect people with outstanding products, even when other mortgage lenders say no."</p><div className="review-meta"><div className="review-avatar">BH</div><div><p className="review-author">Bay Area Homeowner</p><p className="review-source">Google</p></div></div></div>
             <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"His Blueprint tool showed us exactly where every dollar was going — no surprises at closing. AMAZING experience."</p><div className="review-meta"><div className="review-avatar">RC</div><div><p className="review-author">Repeat Client</p><p className="review-source">Yelp</p></div></div></div>
-            <div className="review-card"><div className="review-stars">★★★★★</div><p className="review-text">"The only lender I trust with my clients. Communication is top-notch, tools are next-level. My go-to broker."</p><div className="review-meta"><div className="review-avatar">SA</div><div><p className="review-author">SF Real Estate Agent</p><p className="review-source">Yelp</p></div></div></div>
           </div>
           <div style={{textAlign:'center',marginTop:'32px'}}><a onClick={() => scrollTo('reviews')} className="btn btn-secondary" style={{cursor:'pointer'}}>Read all 290+ reviews &rarr;</a></div>
         </div>
@@ -245,8 +244,8 @@ export default function App() {
       <section className="section" id="about">
         <div className="container">
           <div className="about-grid-v3">
-            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <Icons.Person />
+            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',overflow:'hidden'}}>
+              <img src="/christo.webp" alt="Chris Granger — Mortgage Broker" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} onError={e => { e.target.style.display='none'; e.target.parentElement.style.display='flex'; e.target.parentElement.style.alignItems='center'; e.target.parentElement.style.justifyContent='center'; }} />
             </div>
             <div>
               <div className="label">About</div>

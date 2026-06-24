@@ -98,6 +98,7 @@ export default function App() {
           <nav className="nav">
             <a onClick={() => scrollTo('about')}>About</a>
             <a onClick={() => scrollTo('loans')}>Programs</a>
+            <a onClick={() => scrollTo('highcost')}>Credits</a>
             <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
             <a onClick={() => scrollTo('calculator')}>Calculator</a>
             <a onClick={() => scrollTo('pricepoint')}>PricePoint</a>
@@ -117,8 +118,8 @@ export default function App() {
         </div>
         {mobileMenuOpen && (
           <div style={{background:'var(--bg-elevated)',borderBottom:'1px solid var(--border)',padding:'16px 24px',display:'flex',flexDirection:'column',gap:'12px'}}>
-            {['about','loans','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
-              <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id}</a>
+            {['about','loans','highcost','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
+              <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id === 'highcost' ? 'Credits' : id}</a>
             ))}
             <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
             <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
@@ -255,8 +256,8 @@ export default function App() {
       <section className="section" id="about">
         <div className="container">
           <div className="about-grid-v3">
-            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',display:'flex',alignItems:'center',justifyContent:'center'}}>
-              <Icons.Person />
+            <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden'}}>
+              <img src="/headshot.jpg" alt="Chris Granger, mortgage broker" style={{width:'100%',height:'100%',objectFit:'cover'}} onError={(e)=>{e.currentTarget.outerHTML='<svg width=\"80\" height=\"80\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23737373\" stroke-width=\"1\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/></svg>'}} />
             </div>
             <div>
               <div className="label">About</div>
@@ -295,6 +296,42 @@ export default function App() {
             <div className="program-card"><h3><Icons.Activity />Investment</h3><p>Single-family, multi-unit, DSCR loans.</p><div><span className="program-tag">DSCR</span><span className="program-tag">1-4 units</span><span className="program-tag">ROI analysis</span></div></div>
             <div className="program-card"><h3><Icons.Key />First-Time Buyer</h3><p>Programs to make Bay Area homeownership real.</p><div><span className="program-tag">DPA</span><span className="program-tag">3% down</span><span className="program-tag">Blueprint</span></div></div>
             <div className="program-card"><h3><Icons.CreditCard />Non-QM</h3><p>Self-employed, 1099, bank statements, foreign national.</p><div><span className="program-tag">Bank stmt</span><span className="program-tag">1099</span><span className="program-tag">Asset depletion</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      {/* HIGH COST AREA PURCHASE PROGRAM */}
+      <section className="section" id="highcost" style={{borderTop:'1px solid var(--border)'}}>
+        <div className="container">
+          <div style={{border:'1px solid var(--border)',borderRadius:'var(--radius-xl)',background:'linear-gradient(135deg,rgba(99,102,241,0.08),rgba(59,130,246,0.04))',padding:'40px',position:'relative',overflow:'hidden'}}>
+            <div className="label" style={{color:'var(--accent-light)'}}>First-Time Buyer Spotlight</div>
+            <div className="glow-line" style={{margin:'14px 0 20px'}}></div>
+            <h2 style={{fontSize:'2.1rem',letterSpacing:'-0.04em',marginBottom:'14px'}}>High Cost Area Purchase Program</h2>
+            <p style={{color:'var(--text-secondary)',fontSize:'1rem',lineHeight:'1.7',maxWidth:'640px',marginBottom:'28px'}}>
+              Agency price credits toward an <strong style={{color:'var(--text-primary)'}}>interest rate buydown</strong> for first-time buyers purchasing in the Bay Area's designated high-cost census tracts. Not a loan, not a grant, not taxable — and it never has to be paid back.
+            </p>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(150px,1fr))',gap:'12px',marginBottom:'30px'}}>
+              <div style={{background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'18px'}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:'1.4rem',fontWeight:700,color:'var(--accent-light)'}}>Agency</div>
+                <div style={{color:'var(--text-muted)',fontSize:'0.8rem',marginTop:'4px'}}>Price credits for a buydown</div>
+              </div>
+              <div style={{background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'18px'}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:'1.4rem',fontWeight:700,color:'var(--accent-light)'}}>FTHB</div>
+                <div style={{color:'var(--text-muted)',fontSize:'0.8rem',marginTop:'4px'}}>No ownership in past 3 years</div>
+              </div>
+              <div style={{background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'18px'}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:'1.4rem',fontWeight:700,color:'var(--accent-light)'}}>≤120%</div>
+                <div style={{color:'var(--text-muted)',fontSize:'0.8rem',marginTop:'4px'}}>Of Area Median Income</div>
+              </div>
+              <div style={{background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'18px'}}>
+                <div style={{fontFamily:'var(--mono)',fontSize:'1.4rem',fontWeight:700,color:'var(--accent-light)'}}>10 days</div>
+                <div style={{color:'var(--text-muted)',fontSize:'0.8rem',marginTop:'4px'}}>Can close in as few as</div>
+              </div>
+            </div>
+            <div className="btn-group">
+              <a href="/learn/high-cost-area-purchase-program.html" className="btn btn-accent">See how it works &rarr;</a>
+              <a onClick={() => scrollTo('contact')} className="btn btn-secondary" style={{cursor:'pointer'}}>Check a property</a>
+            </div>
           </div>
         </div>
       </section>
@@ -508,6 +545,7 @@ export default function App() {
               <h4>Resources</h4>
               <ul className="footer-links">
                 <li><a href="/learn/" style={{color:'var(--accent-light)'}}>Mortgage Education</a></li>
+                <li><a href="/learn/high-cost-area-purchase-program.html">High Cost Area Program</a></li>
                 <li><a onClick={() => scrollTo('newsletter')} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
                 <li><a onClick={() => scrollTo('agents')} style={{cursor:'pointer'}}>Agent Resources</a></li>
                 <li><a onClick={() => scrollTo('contact')} style={{cursor:'pointer'}}>Contact</a></li>

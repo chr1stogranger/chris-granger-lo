@@ -73,7 +73,7 @@ export default function App() {
         <div className="container">
           <div className="logo" onClick={() => scrollTo('hero')}>
             <svg viewBox="0 0 100 100" fill="none" style={{width:32,height:32,borderRadius:7,overflow:'hidden',flexShrink:0}}>
-              <defs><linearGradient id="rs-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#6366F1"/><stop offset="100%" stopColor="#3B82F6"/></linearGradient></defs>
+              <defs><linearGradient id="rs-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#3B6BF5"/><stop offset="100%" stopColor="#2B4FCE"/></linearGradient></defs>
               <rect width="100" height="100" fill="url(#rs-bg)"/>
               <polygon points="50,4 8,22 50,17 92,22" fill="rgba(255,255,255,0.95)"/>
               <polygon points="50,17 92,22 92,26 50,21" fill="rgba(255,255,255,0.48)"/>
@@ -174,29 +174,29 @@ export default function App() {
           </div>
           <div className="bento">
             <div className="bento-item span-2">
-              <div className="bento-icon" style={{background:'rgba(99,102,241,0.08)'}}><Icons.Blueprint /></div>
+              <div className="bento-icon" style={{background:'rgba(59,107,245,0.08)'}}><Icons.Blueprint /></div>
               <h3>Mortgage Blueprint</h3>
               <p>My signature tool — a supercharged calculator that maps out every dollar of your loan. Payment breakdown, tax savings, amortization, investment analysis, and side-by-side comparisons. No other broker gives you this.</p>
               <a onClick={() => scrollTo('calculator')} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
             </div>
             <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(6,182,212,0.08)'}}><Icons.Target /></div>
+              <div className="bento-icon" style={{background:'rgba(56,198,198,0.08)'}}><Icons.Target /></div>
               <h3>Full Transparency</h3>
               <p>Every fee, every cost, every dollar — matching your official Loan Estimate. No surprises at closing.</p>
             </div>
             <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(16,185,129,0.08)'}}><Icons.Users /></div>
+              <div className="bento-icon" style={{background:'rgba(18,161,80,0.08)'}}><Icons.Users /></div>
               <h3>30+ Lenders</h3>
               <p>As a broker, I shop your loan across the whole wholesale market. Banks offer one product — I offer the best one.</p>
             </div>
             <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(245,158,11,0.08)'}}><Icons.Star /></div>
+              <div className="bento-icon" style={{background:'rgba(217,138,11,0.08)'}}><Icons.Star /></div>
               <h3>PricePoint</h3>
               <p>A game that tests your real estate instincts with real MLS data. City leaderboards. Built for fun.</p>
               <a onClick={() => scrollTo('pricepoint')} className="card-link" style={{cursor:'pointer'}}>Play now &rarr;</a>
             </div>
             <div className="bento-item">
-              <div className="bento-icon" style={{background:'rgba(139,92,246,0.08)'}}><Icons.Mail /></div>
+              <div className="bento-icon" style={{background:'rgba(139,123,240,0.08)'}}><Icons.Mail /></div>
               <h3>Three Point Thursday</h3>
               <p>Weekly newsletter: rates, market data, and strategies. Hundreds of Bay Area professionals read it every Thursday.</p>
               <a onClick={() => scrollTo('newsletter')} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
@@ -309,7 +309,7 @@ export default function App() {
       {/* HIGH COST AREA PURCHASE PROGRAM */}
       <section className="section" id="highcost" style={{borderTop:'1px solid var(--border)'}}>
         <div className="container">
-          <div style={{border:'1px solid var(--border)',borderRadius:'var(--radius-xl)',background:'linear-gradient(135deg,rgba(99,102,241,0.08),rgba(59,130,246,0.04))',padding:'40px',position:'relative',overflow:'hidden'}}>
+          <div style={{border:'1px solid var(--border)',borderRadius:'var(--radius-xl)',background:'linear-gradient(135deg,rgba(59,107,245,0.08),rgba(43,79,206,0.04))',padding:'40px',position:'relative',overflow:'hidden'}}>
             <div className="label" style={{color:'var(--accent-light)'}}>First-Time Buyer Spotlight</div>
             <div className="glow-line" style={{margin:'14px 0 20px'}}></div>
             <h2 style={{fontSize:'2.1rem',letterSpacing:'-0.04em',marginBottom:'14px'}}>High Cost Area Purchase Program</h2>
@@ -454,7 +454,7 @@ export default function App() {
                 <h4>Location</h4>
                 <p>Alameda & San Francisco, CA</p>
               </div>
-              <div className="contact-card" style={{background:'linear-gradient(135deg,rgba(99,102,241,0.1),rgba(59,130,246,0.05))',borderColor:'rgba(99,102,241,0.2)'}}>
+              <div className="contact-card" style={{background:'linear-gradient(135deg,rgba(59,107,245,0.12),rgba(43,79,206,0.06))',borderColor:'rgba(59,107,245,0.2)'}}>
                 <h4 style={{color:'var(--accent-light)'}}>Schedule a Call</h4>
                 <p style={{marginBottom:'12px'}}>15-min discovery or 30-min deep dive.</p>
                 <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Open Calendly &rarr;</a>
@@ -500,7 +500,7 @@ export default function App() {
               <button type="submit" className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px',border:'none',cursor:'pointer'}} disabled={formStatus === 'sending'}>
                 {formStatus === 'sending' ? 'Sending...' : 'Send Message \u2192'}
               </button>
-              {formStatus === 'success' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#10B981',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
+              {formStatus === 'success' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#12a150',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
               {formStatus === 'error' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>Something went wrong. Please try again or email me directly.</p>}
               {!formStatus && <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>}
             </form>
@@ -515,7 +515,7 @@ export default function App() {
             <div className="footer-brand">
               <div className="logo" style={{marginBottom:'4px'}}>
                 <svg viewBox="0 0 100 100" fill="none" style={{width:28,height:28,borderRadius:6,overflow:'hidden',flexShrink:0}}>
-                  <defs><linearGradient id="rs-bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#6366F1"/><stop offset="100%" stopColor="#3B82F6"/></linearGradient></defs>
+                  <defs><linearGradient id="rs-bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#3B6BF5"/><stop offset="100%" stopColor="#2B4FCE"/></linearGradient></defs>
                   <rect width="100" height="100" fill="url(#rs-bg2)"/>
                   <polygon points="50,4 8,22 50,17 92,22" fill="rgba(255,255,255,0.95)"/>
                   <polygon points="50,17 92,22 92,26 50,21" fill="rgba(255,255,255,0.48)"/>
@@ -589,14 +589,14 @@ export default function App() {
           position: 'fixed', bottom: 24, right: 24, zIndex: 1000,
           display: 'flex', alignItems: 'center', gap: 8,
           padding: '12px 20px', borderRadius: 9999,
-          background: 'linear-gradient(135deg, #6366F1, #3B82F6)',
+          background: 'linear-gradient(135deg, #3B6BF5, #2B4FCE)',
           color: '#fff', textDecoration: 'none',
           fontSize: '0.85rem', fontWeight: 600, letterSpacing: '-0.01em',
-          boxShadow: '0 4px 20px rgba(99,102,241,0.4)',
+          boxShadow: '0 4px 20px rgba(59,107,245,0.4)',
           transition: 'transform 0.2s, box-shadow 0.2s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(99,102,241,0.5)'; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 20px rgba(99,102,241,0.4)'; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(59,107,245,0.5)'; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 20px rgba(59,107,245,0.4)'; }}
         aria-label="Book a call with Chris Granger"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -294,8 +294,8 @@ export default function App() {
             <p>Dozens of lenders. Hundreds of products. Here are the ones I use most.</p>
           </div>
           <div className="program-grid">
-            <div className="program-card"><h3><Icons.Home />Conventional</h3><p>Good credit, steady income. The workhorse loan.</p><div><span className="program-tag">3% down</span><span className="program-tag">Fixed & ARM</span><span className="program-tag">Up to $766K</span></div></div>
-            <div className="program-card"><h3><Icons.Dollar />Jumbo</h3><p>Bay Area homes above conforming limits.</p><div><span className="program-tag">$766K+</span><span className="program-tag">IO available</span><span className="program-tag">Up to $3M+</span></div></div>
+            <div className="program-card"><h3><Icons.Home />Conventional</h3><p>Good credit, steady income. The workhorse loan.</p><div><span className="program-tag">3% down</span><span className="program-tag">Fixed & ARM</span><span className="program-tag">Conforming</span></div></div>
+            <div className="program-card"><h3><Icons.Dollar />Jumbo</h3><p>Bay Area homes above conforming limits.</p><div><span className="program-tag">Above conforming</span><span className="program-tag">IO available</span><span className="program-tag">Up to $3M+</span></div></div>
             <div className="program-card"><h3><Icons.Shield />FHA</h3><p>Flexible qualifying for first-time buyers.</p><div><span className="program-tag">3.5% down</span><span className="program-tag">580+ FICO</span><span className="program-tag">Gift funds OK</span></div></div>
             <div className="program-card"><h3><Icons.ShieldCheck />VA</h3><p>Zero-down for vets and active military.</p><div><span className="program-tag">$0 down</span><span className="program-tag">No MI</span><span className="program-tag">Competitive</span></div></div>
             <div className="program-card"><h3><Icons.Refresh />Refinance</h3><p>Lower rate, shorter term, cash out, drop PMI.</p><div><span className="program-tag">Rate & term</span><span className="program-tag">Cash-out</span><span className="program-tag">Streamline</span></div></div>

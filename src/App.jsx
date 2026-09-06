@@ -385,7 +385,7 @@ export default function App() {
             <div style={{background:'var(--bg-base)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'24px',overflow:'hidden'}}>
               <iframe src="https://chrisgranger.substack.com/embed" width="100%" height="150" style={{border:'none',background:'transparent'}} title="Subscribe to Three Point Thursday" loading="lazy" />
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'16px',marginTop:'24px',textAlign:'left'}}>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit, minmax(140px, 1fr))',gap:'16px',marginTop:'24px',textAlign:'left'}}>
               <div style={{padding:'16px',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
                 <p style={{fontSize:'0.75rem',fontWeight:'700',marginBottom:'4px'}}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--accent-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-1px',marginRight:'4px'}}><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>

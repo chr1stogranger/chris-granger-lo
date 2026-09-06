@@ -38,7 +38,7 @@ const Icons = {
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '', company: '' }) // company = honeypot
   const [formStatus, setFormStatus] = useState(null) // null | 'sending' | 'success' | 'error'
 
   const handleSubmit = async (e) => {
@@ -53,12 +53,12 @@ export default function App() {
       })
       if (res.ok) {
         setFormStatus('success')
-        setFormData({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '' })
+        setFormData({ name: '', email: '', phone: '', interest: 'Buying a Home', message: '', company: '' })
       } else {
         setFormStatus('error')
       }
     } catch { setFormStatus('error') }
-    setTimeout(() => setFormStatus(null), 5000)
+    setTimeout(() => setFormStatus(null), 8000)
   }
 
   const scrollTo = (id) => {
@@ -467,18 +467,19 @@ export default function App() {
             </div>
             <form className="contact-form-card" onSubmit={handleSubmit}>
               <h3>Send a message</h3>
+              <input type="text" name="company" value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} tabIndex={-1} autoComplete="off" aria-hidden="true" style={{position:'absolute',left:'-9999px'}} />
               <div className="form-group">
                 <label className="form-label" htmlFor="contact-name">Name *</label>
-                <input id="contact-name" className="form-input" type="text" placeholder="Full name" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} required />
+                <input id="contact-name" className="form-input" type="text" placeholder="Full name" maxLength={100} value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} required />
               </div>
               <div className="form-row">
                 <div className="form-group">
                   <label className="form-label" htmlFor="contact-email">Email *</label>
-                  <input id="contact-email" className="form-input" type="email" placeholder="you@email.com" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required />
+                  <input id="contact-email" className="form-input" type="email" placeholder="you@email.com" maxLength={254} value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} required />
                 </div>
                 <div className="form-group">
                   <label className="form-label" htmlFor="contact-phone">Phone</label>
-                  <input id="contact-phone" className="form-input" type="tel" placeholder="(555) 123-4567" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
+                  <input id="contact-phone" className="form-input" type="tel" placeholder="(555) 123-4567" maxLength={30} value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                 </div>
               </div>
               <div className="form-group">
@@ -495,13 +496,13 @@ export default function App() {
               </div>
               <div className="form-group">
                 <label className="form-label" htmlFor="contact-message">Message</label>
-                <textarea id="contact-message" className="form-textarea" placeholder="Tell me about your situation..." value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
+                <textarea id="contact-message" className="form-textarea" placeholder="Tell me about your situation..." maxLength={2000} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
               </div>
               <button type="submit" className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px',border:'none',cursor:'pointer'}} disabled={formStatus === 'sending'}>
                 {formStatus === 'sending' ? 'Sending...' : 'Send Message \u2192'}
               </button>
               {formStatus === 'success' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#12a150',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
-              {formStatus === 'error' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>Something went wrong. Please try again or email me directly.</p>}
+              {formStatus === 'error' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>That didn't go through. Email me directly at <a href="mailto:cgranger@xperthomelending.com" style={{color:'#EF4444'}}>cgranger@xperthomelending.com</a> and I'll get right back to you.</p>}
               {!formStatus && <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>}
             </form>
           </div>

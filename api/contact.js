@@ -9,6 +9,20 @@
 const FROM = 'Chris Granger Website <blueprint@realstack.app>'
 const DEFAULT_TO = 'cgranger@xperthomelending.com'
 
+// Only our own site may post to this endpoint.
+const ALLOWED_ORIGINS = new Set(['https://chris-granger-lo.vercel.app'])
+
+// Mirrors the <select> in src/App.jsx. Anything else becomes "Other".
+const ALLOWED_INTERESTS = new Set([
+  'Buying a Home',
+  'Refinancing',
+  'Pre-Approval',
+  'Investment Property',
+  'Jumbo Loan',
+  'First-Time Buyer',
+  'Agent Partnership',
+])
+
 // In-memory per-IP rate limit (per lambda instance, enough to stop naive flooding).
 const RATE_WINDOW_MS = 10 * 60 * 1000 // 10 min
 const RATE_MAX = 5
@@ -44,6 +58,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  // Origin allowlist. Browsers always send Origin on cross-site POSTs.
+  const origin = req.headers.origin
+  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+    return res.status(403).json({ error: 'Forbidden' })
+  }
+
   const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown'
   if (rateLimited(ip)) {
     res.setHeader('Retry-After', '600')
@@ -60,7 +80,8 @@ export default async function handler(req, res) {
   const name = clean(body.name, 100)
   const email = clean(body.email, 254)
   const phone = clean(body.phone, 30)
-  const interest = clean(body.interest, 60) || 'General'
+  const rawInterest = clean(body.interest, 60)
+  const interest = ALLOWED_INTERESTS.has(rawInterest) ? rawInterest : 'Other'
   const message = (typeof body.message === 'string' ? body.message : '').trim().slice(0, 2000)
 
   if (!name) return res.status(400).json({ error: 'Name is required' })

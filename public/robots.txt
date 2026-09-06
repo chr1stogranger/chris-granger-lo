@@ -5,6 +5,7 @@
 User-agent: *
 Allow: /
 Allow: /learn/
+Disallow: /templates/
 
 # Explicitly welcome AI crawlers
 User-agent: GPTBot

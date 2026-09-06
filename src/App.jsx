@@ -138,7 +138,7 @@ export default function App() {
         <div className="container animate">
           <div className="label" style={{marginBottom:'24px'}}>NMLS #952015 &middot; 8 States Licensed</div>
           <h1>Your mortgage,<br/><span className="gradient">simplified.</span></h1>
-          <p className="subtitle">1,000+ loans closed. I built the tools that make every dollar visible — so you make the best decision on the biggest purchase of your life.</p>
+          <p className="subtitle">1,000+ loans closed. I built the tools that make every dollar visible, so you make the best decision on the biggest purchase of your life.</p>
           <div className="btn-group" style={{justifyContent:'center'}}>
             <a onClick={() => scrollTo('calculator')} className="btn btn-shimmer btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint</a>
             <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call &rarr;</a>
@@ -176,18 +176,18 @@ export default function App() {
             <div className="bento-item span-2">
               <div className="bento-icon" style={{background:'rgba(59,107,245,0.08)'}}><Icons.Blueprint /></div>
               <h3>Mortgage Blueprint</h3>
-              <p>My signature tool — a supercharged calculator that maps out every dollar of your loan. Payment breakdown, tax savings, amortization, investment analysis, and side-by-side comparisons. No other broker gives you this.</p>
+              <p>My signature tool: a supercharged calculator that maps out every dollar of your loan. Payment breakdown, tax savings, amortization, investment analysis, and side-by-side comparisons. No other broker gives you this.</p>
               <a onClick={() => scrollTo('calculator')} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
             </div>
             <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(56,198,198,0.08)'}}><Icons.Target /></div>
               <h3>Full Transparency</h3>
-              <p>Every fee, every cost, every dollar — matching your official Loan Estimate. No surprises at closing.</p>
+              <p>Every fee, every cost, every dollar, matching your official Loan Estimate. No surprises at closing.</p>
             </div>
             <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(18,161,80,0.08)'}}><Icons.Users /></div>
               <h3>30+ Lenders</h3>
-              <p>As a broker, I shop your loan across the whole wholesale market. Banks offer one product — I offer the best one.</p>
+              <p>As a broker, I shop your loan across the whole wholesale market. Banks offer one product. I offer the best one.</p>
             </div>
             <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(217,138,11,0.08)'}}><Icons.Star /></div>
@@ -250,7 +250,7 @@ export default function App() {
         <div className="aurora"></div>
         <div className="container">
           <h2>Ready to<br/><span className="gradient" style={{background:'linear-gradient(135deg,var(--accent-bright),var(--blue),var(--teal))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>map out your loan?</span></h2>
-          <p>First-time buyer, move-up, investor — let's build your Blueprint.</p>
+          <p>First-time buyer, move-up, investor. Let's build your Blueprint.</p>
           <div className="btn-group" style={{justifyContent:'center'}}>
             <a onClick={() => scrollTo('calculator')} className="btn btn-accent btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint &rarr;</a>
             <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call</a>
@@ -268,8 +268,8 @@ export default function App() {
             <div>
               <div className="label">About</div>
               <h2 style={{fontSize:'2.4rem',margin:'16px 0 20px'}}>Hi, I'm Chris.</h2>
-              <p style={{color:'var(--text-secondary)',marginBottom:'16px',fontSize:'0.95rem',lineHeight:'1.7'}}>Mortgage broker since 2012. Over 1,000 loans. Based in the Bay Area. I built <strong style={{color:'var(--text-primary)'}}>Mortgage Blueprint</strong> because the industry was designed to confuse people — and I wanted to fix that.</p>
-              <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 30+ wholesale lenders. I'm not selling you a product — I'm building you a plan.</p>
+              <p style={{color:'var(--text-secondary)',marginBottom:'16px',fontSize:'0.95rem',lineHeight:'1.7'}}>Mortgage broker since 2012. Over 1,000 loans. Based in the Bay Area. I built <strong style={{color:'var(--text-primary)'}}>Mortgage Blueprint</strong> because the industry was designed to confuse people, and I wanted to fix that.</p>
+              <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 30+ wholesale lenders. I'm not selling you a product. I'm building you a plan.</p>
               <div className="btn-group">
                 <a onClick={() => scrollTo('contact')} className="btn btn-primary" style={{cursor:'pointer'}}>Work with me</a>
                 <a onClick={() => scrollTo('calculator')} className="btn btn-secondary" style={{cursor:'pointer'}}>Try the Blueprint</a>
@@ -314,7 +314,7 @@ export default function App() {
             <div className="glow-line" style={{margin:'14px 0 20px'}}></div>
             <h2 style={{fontSize:'2.1rem',letterSpacing:'-0.04em',marginBottom:'14px'}}>High Cost Area Purchase Program</h2>
             <p style={{color:'var(--text-secondary)',fontSize:'1rem',lineHeight:'1.7',maxWidth:'640px',marginBottom:'28px'}}>
-              Agency price credits toward an <strong style={{color:'var(--text-primary)'}}>interest rate buydown</strong> for first-time buyers purchasing in the Bay Area's designated high-cost census tracts. Not a loan, not a grant, not taxable — and it never has to be paid back.
+              Agency price credits toward an <strong style={{color:'var(--text-primary)'}}>interest rate buydown</strong> for first-time buyers purchasing in the Bay Area's designated high-cost census tracts. Not a loan, not a grant, not taxable. And it never has to be paid back.
             </p>
             <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(150px,1fr))',gap:'12px',marginBottom:'30px'}}>
               <div style={{background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:'var(--radius)',padding:'18px'}}>
@@ -377,7 +377,7 @@ export default function App() {
             <div className="label">Newsletter</div>
             <div className="glow-line"></div>
             <h2>Three Point Thursday</h2>
-            <p>Rates, market data, and strategies — every Thursday morning.</p>
+            <p>Rates, market data, and strategies. Every Thursday morning.</p>
           </div>
           <div className="newsletter-card">
             <h3 style={{fontSize:'1.2rem',fontWeight:'700',marginBottom:'12px',letterSpacing:'-0.02em'}}>Join hundreds of Bay Area pros</h3>
@@ -581,7 +581,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating Calendly CTA — always visible */}
+      {/* Floating Calendly CTA, always visible */}
       <a
         href={LINKS.calendly}
         target="_blank"

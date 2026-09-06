@@ -162,6 +162,9 @@ a:hover { color: var(--accent-bright); }
 
 /* FAQ Section */
 .faq-section { margin: 48px 0; }
+.illustrative, .disclaimer { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+.illustrative { margin: 0 0 8px; font-style: italic; }
+.disclaimer { margin: 40px 0 8px; padding-top: 16px; border-top: 1px solid var(--border); }
 .faq-item {
   border: 1px solid var(--border); border-radius: var(--radius);
   margin-bottom: 12px; overflow: hidden;

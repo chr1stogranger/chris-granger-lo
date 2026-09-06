@@ -61,7 +61,8 @@ export default function App() {
     setTimeout(() => setFormStatus(null), 8000)
   }
 
-  const scrollTo = (id) => {
+  const scrollTo = (id, e) => {
+    if (e) e.preventDefault()
     setMobileMenuOpen(false)
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -71,7 +72,7 @@ export default function App() {
       {/* HEADER */}
       <header className="header">
         <div className="container">
-          <div className="logo" onClick={() => scrollTo('hero')}>
+          <a href="#hero" className="logo" onClick={(e) => scrollTo('hero', e)} aria-label="Chris Granger Mortgage home" style={{textDecoration:'none'}}>
             <svg viewBox="0 0 100 100" fill="none" style={{width:32,height:32,borderRadius:7,overflow:'hidden',flexShrink:0}}>
               <defs><linearGradient id="rs-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#3B6BF5"/><stop offset="100%" stopColor="#2B4FCE"/></linearGradient></defs>
               <rect width="100" height="100" fill="url(#rs-bg)"/>
@@ -94,32 +95,33 @@ export default function App() {
             <span className="logo-text">Chris Granger</span>
             <span className="logo-divider">/</span>
             <span className="logo-sub">Mortgage</span>
-          </div>
+          </a>
           <nav className="nav">
-            <a onClick={() => scrollTo('about')}>About</a>
-            <a onClick={() => scrollTo('loans')}>Programs</a>
-            <a onClick={() => scrollTo('highcost')}>Credits</a>
+            <a href="#about" onClick={(e) => scrollTo('about', e)}>About</a>
+            <a href="#loans" onClick={(e) => scrollTo('loans', e)}>Programs</a>
+            <a href="#highcost" onClick={(e) => scrollTo('highcost', e)}>Credits</a>
             <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
-            <a onClick={() => scrollTo('calculator')}>Calculator</a>
-            <a onClick={() => scrollTo('pricepoint')}>PricePoint</a>
-            <a onClick={() => scrollTo('reviews')}>Reviews</a>
-            <a onClick={() => scrollTo('newsletter')}>Newsletter</a>
-            <a onClick={() => scrollTo('agents')}>Agents</a>
-            <a onClick={() => scrollTo('contact')} className="nav-cta">Get Started</a>
+            <a href="#calculator" onClick={(e) => scrollTo('calculator', e)}>Calculator</a>
+            <a href="#pricepoint" onClick={(e) => scrollTo('pricepoint', e)}>PricePoint</a>
+            <a href="#reviews" onClick={(e) => scrollTo('reviews', e)}>Reviews</a>
+            <a href="#newsletter" onClick={(e) => scrollTo('newsletter', e)}>Newsletter</a>
+            <a href="#agents" onClick={(e) => scrollTo('agents', e)}>Agents</a>
+            <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="nav-cta">Get Started</a>
           </nav>
           <button
             className="mobile-menu-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? <Icons.Close /> : <Icons.Menu />}
           </button>
         </div>
         {mobileMenuOpen && (
-          <div style={{background:'var(--bg-elevated)',borderBottom:'1px solid var(--border)',padding:'16px 24px',display:'flex',flexDirection:'column',gap:'12px'}}>
+          <div id="mobile-menu" style={{background:'var(--bg-elevated)',borderBottom:'1px solid var(--border)',padding:'16px 24px',display:'flex',flexDirection:'column',gap:'12px'}}>
             {['about','loans','highcost','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
-              <a key={id} onClick={() => scrollTo(id)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id === 'highcost' ? 'Credits' : id}</a>
+              <a key={id} href={`#${id}`} onClick={(e) => scrollTo(id, e)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id === 'highcost' ? 'Credits' : id}</a>
             ))}
             <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
             <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
@@ -140,7 +142,7 @@ export default function App() {
           <h1>Your mortgage,<br/><span className="gradient">simplified.</span></h1>
           <p className="subtitle">1,000+ loans closed. I built the tools that make every dollar visible, so you make the best decision on the biggest purchase of your life.</p>
           <div className="btn-group" style={{justifyContent:'center'}}>
-            <a onClick={() => scrollTo('calculator')} className="btn btn-shimmer btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint</a>
+            <a href="#calculator" onClick={(e) => scrollTo('calculator', e)} className="btn btn-shimmer btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint</a>
             <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call &rarr;</a>
           </div>
           <div className="hero-badges">
@@ -177,7 +179,7 @@ export default function App() {
               <div className="bento-icon" style={{background:'rgba(59,107,245,0.08)'}}><Icons.Blueprint /></div>
               <h3>Mortgage Blueprint</h3>
               <p>My signature tool: a supercharged calculator that maps out every dollar of your loan. Payment breakdown, tax savings, amortization, investment analysis, and side-by-side comparisons. No other broker gives you this.</p>
-              <a onClick={() => scrollTo('calculator')} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
+              <a href="#calculator" onClick={(e) => scrollTo('calculator', e)} className="card-link" style={{cursor:'pointer'}}>Open the Blueprint &rarr;</a>
             </div>
             <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(56,198,198,0.08)'}}><Icons.Target /></div>
@@ -193,13 +195,13 @@ export default function App() {
               <div className="bento-icon" style={{background:'rgba(217,138,11,0.08)'}}><Icons.Star /></div>
               <h3>PricePoint</h3>
               <p>A game that tests your real estate instincts with real MLS data. City leaderboards. Built for fun.</p>
-              <a onClick={() => scrollTo('pricepoint')} className="card-link" style={{cursor:'pointer'}}>Play now &rarr;</a>
+              <a href="#pricepoint" onClick={(e) => scrollTo('pricepoint', e)} className="card-link" style={{cursor:'pointer'}}>Play now &rarr;</a>
             </div>
             <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(139,123,240,0.08)'}}><Icons.Mail /></div>
               <h3>Three Point Thursday</h3>
               <p>Weekly newsletter: rates, market data, and strategies. Hundreds of Bay Area professionals read it every Thursday.</p>
-              <a onClick={() => scrollTo('newsletter')} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
+              <a href="#newsletter" onClick={(e) => scrollTo('newsletter', e)} className="card-link" style={{cursor:'pointer'}}>Subscribe &rarr;</a>
             </div>
           </div>
         </div>
@@ -252,7 +254,7 @@ export default function App() {
           <h2>Ready to<br/><span className="gradient" style={{background:'linear-gradient(135deg,var(--accent-bright),var(--blue),var(--teal))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>map out your loan?</span></h2>
           <p>First-time buyer, move-up, investor. Let's build your Blueprint.</p>
           <div className="btn-group" style={{justifyContent:'center'}}>
-            <a onClick={() => scrollTo('calculator')} className="btn btn-accent btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint &rarr;</a>
+            <a href="#calculator" onClick={(e) => scrollTo('calculator', e)} className="btn btn-accent btn-lg" style={{cursor:'pointer'}}>Build Your Blueprint &rarr;</a>
             <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">Schedule a Call</a>
           </div>
         </div>
@@ -271,8 +273,8 @@ export default function App() {
               <p style={{color:'var(--text-secondary)',marginBottom:'16px',fontSize:'0.95rem',lineHeight:'1.7'}}>Mortgage broker since 2012. Over 1,000 loans. Based in the Bay Area. I built <strong style={{color:'var(--text-primary)'}}>Mortgage Blueprint</strong> because the industry was designed to confuse people, and I wanted to fix that.</p>
               <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 30+ wholesale lenders. I'm not selling you a product. I'm building you a plan.</p>
               <div className="btn-group">
-                <a onClick={() => scrollTo('contact')} className="btn btn-primary" style={{cursor:'pointer'}}>Work with me</a>
-                <a onClick={() => scrollTo('calculator')} className="btn btn-secondary" style={{cursor:'pointer'}}>Try the Blueprint</a>
+                <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="btn btn-primary" style={{cursor:'pointer'}}>Work with me</a>
+                <a href="#calculator" onClick={(e) => scrollTo('calculator', e)} className="btn btn-secondary" style={{cursor:'pointer'}}>Try the Blueprint</a>
               </div>
               <div style={{display:'flex',flexWrap:'wrap',gap:'6px',marginTop:'24px'}}>
                 {['CA','OR','WA','NV','AZ','CO','HI','TX'].map(s => (
@@ -336,7 +338,7 @@ export default function App() {
             </div>
             <div className="btn-group">
               <a href="/learn/high-cost-area-purchase-program.html" className="btn btn-accent">See how it works &rarr;</a>
-              <a onClick={() => scrollTo('contact')} className="btn btn-secondary" style={{cursor:'pointer'}}>Check a property</a>
+              <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="btn btn-secondary" style={{cursor:'pointer'}}>Check a property</a>
             </div>
           </div>
         </div>
@@ -350,7 +352,7 @@ export default function App() {
           <p style={{color:'var(--text-secondary)',maxWidth:'500px',margin:'0 auto 32px'}}>Payment breakdown. Tax savings. Amortization. Side-by-side comparisons. The same tool I use with every client.</p>
           <div className="btn-group" style={{justifyContent:'center',marginBottom:'48px'}}>
             <a href={LINKS.blueprint} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">Open in new tab &#8599;</a>
-            <a onClick={() => scrollTo('contact')} className="btn btn-accent" style={{cursor:'pointer'}}>Get a custom Blueprint &rarr;</a>
+            <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="btn btn-accent" style={{cursor:'pointer'}}>Get a custom Blueprint &rarr;</a>
           </div>
         </div>
         <div className="embed-placeholder" style={{height:'900px'}}>
@@ -541,11 +543,11 @@ export default function App() {
             <div>
               <h4>Navigation</h4>
               <ul className="footer-links">
-                <li><a onClick={() => scrollTo('about')} style={{cursor:'pointer'}}>About</a></li>
-                <li><a onClick={() => scrollTo('loans')} style={{cursor:'pointer'}}>Loan Programs</a></li>
-                <li><a onClick={() => scrollTo('calculator')} style={{cursor:'pointer'}}>Calculator</a></li>
-                <li><a onClick={() => scrollTo('pricepoint')} style={{cursor:'pointer'}}>PricePoint</a></li>
-                <li><a onClick={() => scrollTo('reviews')} style={{cursor:'pointer'}}>Reviews</a></li>
+                <li><a href="#about" onClick={(e) => scrollTo('about', e)} style={{cursor:'pointer'}}>About</a></li>
+                <li><a href="#loans" onClick={(e) => scrollTo('loans', e)} style={{cursor:'pointer'}}>Loan Programs</a></li>
+                <li><a href="#calculator" onClick={(e) => scrollTo('calculator', e)} style={{cursor:'pointer'}}>Calculator</a></li>
+                <li><a href="#pricepoint" onClick={(e) => scrollTo('pricepoint', e)} style={{cursor:'pointer'}}>PricePoint</a></li>
+                <li><a href="#reviews" onClick={(e) => scrollTo('reviews', e)} style={{cursor:'pointer'}}>Reviews</a></li>
               </ul>
             </div>
             <div>
@@ -553,9 +555,9 @@ export default function App() {
               <ul className="footer-links">
                 <li><a href="/learn/" style={{color:'var(--accent-light)'}}>Mortgage Education</a></li>
                 <li><a href="/learn/high-cost-area-purchase-program.html">High Cost Area Program</a></li>
-                <li><a onClick={() => scrollTo('newsletter')} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
-                <li><a onClick={() => scrollTo('agents')} style={{cursor:'pointer'}}>Agent Resources</a></li>
-                <li><a onClick={() => scrollTo('contact')} style={{cursor:'pointer'}}>Contact</a></li>
+                <li><a href="#newsletter" onClick={(e) => scrollTo('newsletter', e)} style={{cursor:'pointer'}}>Three Point Thursday</a></li>
+                <li><a href="#agents" onClick={(e) => scrollTo('agents', e)} style={{cursor:'pointer'}}>Agent Resources</a></li>
+                <li><a href="#contact" onClick={(e) => scrollTo('contact', e)} style={{cursor:'pointer'}}>Contact</a></li>
                 <li><a href={LINKS.calendly} target="_blank" rel="noopener noreferrer">Calendly</a></li>
               </ul>
             </div>

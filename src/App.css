@@ -418,3 +418,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Skip link (a11y) */
+.skip-link { position: absolute; left: -9999px; top: 8px; z-index: 1000; padding: 8px 14px; border-radius: 9999px; background: var(--accent, #3B6BF5); color: #fff; font-weight: 600; }
+.skip-link:focus { left: 8px; }

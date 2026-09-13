@@ -69,6 +69,7 @@ export default function App() {
 
   return (
     <>
+      <a href="#main" className="skip-link">Skip to content</a>
       {/* HEADER */}
       <header className="header">
         <div className="container">
@@ -128,6 +129,7 @@ export default function App() {
           </div>
         )}
       </header>
+      <main id="main">
 
       {/* HERO */}
       <section className="hero" id="hero">
@@ -503,8 +505,8 @@ export default function App() {
               <button type="submit" className="btn btn-accent btn-lg" style={{width:'100%',marginTop:'4px',border:'none',cursor:'pointer'}} disabled={formStatus === 'sending'}>
                 {formStatus === 'sending' ? 'Sending...' : 'Send Message \u2192'}
               </button>
-              {formStatus === 'success' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#12a150',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
-              {formStatus === 'error' && <p style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>That didn't go through. Email me directly at <a href="mailto:cgranger@xperthomelending.com" style={{color:'#EF4444'}}>cgranger@xperthomelending.com</a> and I'll get right back to you.</p>}
+              {formStatus === 'success' && <p role="status" aria-live="polite" style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#12a150',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
+              {formStatus === 'error' && <p role="alert" style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>That didn't go through. Email me directly at <a href="mailto:cgranger@xperthomelending.com" style={{color:'#EF4444'}}>cgranger@xperthomelending.com</a> and I'll get right back to you.</p>}
               {!formStatus && <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>}
             </form>
           </div>
@@ -512,6 +514,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
+      </main>
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">

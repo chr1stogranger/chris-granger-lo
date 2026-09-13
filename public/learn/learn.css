@@ -180,10 +180,13 @@ a:hover { color: var(--accent-bright); }
   padding: 0 20px 16px; color: var(--text-secondary); font-size: 0.9rem;
   line-height: 1.7; display: none;
 }
-.faq-item.open .faq-answer { display: block; }
-.faq-item.open .faq-question { border-bottom: 1px solid var(--border); }
+.faq-item[open] .faq-answer { display: block; }
+.faq-item[open] .faq-question { border-bottom: 1px solid var(--border); }
+.faq-question { list-style: none; }
+.faq-question::-webkit-details-marker { display: none; }
+.faq-question:focus-visible { outline: 2px solid var(--accent, #3B6BF5); outline-offset: -2px; }
 .faq-toggle { font-size: 1.2rem; color: var(--text-muted); transition: transform 0.2s; }
-.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-item[open] .faq-toggle { transform: rotate(45deg); }
 
 /* CTA Banner */
 .cta-banner {

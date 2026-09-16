@@ -98,15 +98,15 @@ export default function App() {
             <span className="logo-sub">Mortgage</span>
           </a>
           <nav className="nav">
+            <a href="#reviews" onClick={(e) => scrollTo('reviews', e)}>Reviews</a>
             <a href="#about" onClick={(e) => scrollTo('about', e)}>About</a>
             <a href="#loans" onClick={(e) => scrollTo('loans', e)}>Programs</a>
             <a href="#highcost" onClick={(e) => scrollTo('highcost', e)}>Credits</a>
-            <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
             <a href="#calculator" onClick={(e) => scrollTo('calculator', e)}>Calculator</a>
             <a href="#pricepoint" onClick={(e) => scrollTo('pricepoint', e)}>PricePoint</a>
-            <a href="#reviews" onClick={(e) => scrollTo('reviews', e)}>Reviews</a>
             <a href="#newsletter" onClick={(e) => scrollTo('newsletter', e)}>Newsletter</a>
             <a href="#agents" onClick={(e) => scrollTo('agents', e)}>Agents</a>
+            <a href="/learn/" style={{color:'var(--accent-light)'}}>Learn</a>
             <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="nav-cta">Get Started</a>
           </nav>
           <button
@@ -121,7 +121,7 @@ export default function App() {
         </div>
         {mobileMenuOpen && (
           <div id="mobile-menu" style={{background:'var(--bg-elevated)',borderBottom:'1px solid var(--border)',padding:'16px 24px',display:'flex',flexDirection:'column',gap:'12px'}}>
-            {['about','loans','highcost','calculator','pricepoint','reviews','newsletter','agents'].map(id => (
+            {['reviews','about','loans','highcost','calculator','pricepoint','newsletter','agents'].map(id => (
               <a key={id} href={`#${id}`} onClick={(e) => scrollTo(id, e)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id === 'highcost' ? 'Credits' : id}</a>
             ))}
             <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
@@ -190,7 +190,7 @@ export default function App() {
             </div>
             <div className="bento-item">
               <div className="bento-icon" style={{background:'rgba(18,161,80,0.08)'}}><Icons.Users /></div>
-              <h3>30+ Lenders</h3>
+              <h3>100+ Lenders</h3>
               <p>As a broker, I shop your loan across the whole wholesale market. Banks offer one product. I offer the best one.</p>
             </div>
             <div className="bento-item">
@@ -273,7 +273,7 @@ export default function App() {
               <div className="label">About</div>
               <h2 style={{fontSize:'2.4rem',margin:'16px 0 20px'}}>Hi, I'm Chris.</h2>
               <p style={{color:'var(--text-secondary)',marginBottom:'16px',fontSize:'0.95rem',lineHeight:'1.7'}}>Mortgage broker since 2012. Over 1,000 loans. Based in the Bay Area. I built <strong style={{color:'var(--text-primary)'}}>Mortgage Blueprint</strong> because the industry was designed to confuse people, and I wanted to fix that.</p>
-              <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 30+ wholesale lenders. I'm not selling you a product. I'm building you a plan.</p>
+              <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 100+ wholesale lenders. I'm not selling you a product. I'm building you a plan.</p>
               <div className="btn-group">
                 <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="btn btn-primary" style={{cursor:'pointer'}}>Work with me</a>
                 <a href="#calculator" onClick={(e) => scrollTo('calculator', e)} className="btn btn-secondary" style={{cursor:'pointer'}}>Try the Blueprint</a>
@@ -295,7 +295,7 @@ export default function App() {
             <div className="label">Loan Programs</div>
             <div className="glow-line"></div>
             <h2>Find the right loan.</h2>
-            <p>Dozens of lenders. Hundreds of products. Here are the ones I use most.</p>
+            <p>100+ lenders. Hundreds of products. Here are the ones I use most.</p>
           </div>
           <div className="program-grid">
             <div className="program-card"><h3><Icons.Home />Conventional</h3><p>Good credit, steady income. The workhorse loan.</p><div><span className="program-tag">3% down</span><span className="program-tag">Fixed & ARM</span><span className="program-tag">Conforming</span></div></div>
@@ -430,7 +430,7 @@ export default function App() {
             <div className="feature-card"><div className="icon"><Icons.Bolt /></div><h3>Fast pre-approvals</h3><p>Thorough review, not a rubber stamp. Listing agents trust my letters.</p></div>
             <div className="feature-card"><div className="icon"><Icons.Phone /></div><h3>Real-time updates</h3><p>Proactive communication at every milestone. No chasing.</p></div>
             <div className="feature-card"><div className="icon"><Icons.Star /></div><h3>PricePoint</h3><p>Use at open houses. Guests guess prices. Generates leads for both of us.</p></div>
-            <div className="feature-card"><div className="icon"><Icons.Users /></div><h3>30+ lenders</h3><p>More approvals, better rates, creative solutions. First-time to $3M+ jumbo.</p></div>
+            <div className="feature-card"><div className="icon"><Icons.Users /></div><h3>100+ lenders</h3><p>More approvals, better rates, creative solutions. First-time to $3M+ jumbo.</p></div>
             <div className="feature-card"><div className="icon"><Icons.Mail /></div><h3>TPT Newsletter</h3><p>Weekly talking points for buyer consultations. Stay sharp on rates.</p></div>
           </div>
         </div>

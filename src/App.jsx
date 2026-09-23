@@ -276,7 +276,7 @@ export default function App() {
               <p style={{color:'var(--text-secondary)',marginBottom:'28px',fontSize:'0.95rem',lineHeight:'1.7'}}>As a broker (not a bank), I shop your loan across 100+ wholesale lenders. I'm not selling you a product. I'm building you a plan.</p>
               <div className="btn-group">
                 <a href="#contact" onClick={(e) => scrollTo('contact', e)} className="btn btn-primary" style={{cursor:'pointer'}}>Work with me</a>
-                <a href="#calculator" onClick={(e) => scrollTo('calculator', e)} className="btn btn-secondary" style={{cursor:'pointer'}}>Try the Blueprint</a>
+                <a href="/about/" className="btn btn-secondary">Meet the team &rarr;</a>
               </div>
               <div style={{display:'flex',flexWrap:'wrap',gap:'6px',marginTop:'24px'}}>
                 {['CA','OR','WA','NV','AZ','CO','HI','TX'].map(s => (
@@ -546,7 +546,7 @@ export default function App() {
             <div>
               <h4>Navigation</h4>
               <ul className="footer-links">
-                <li><a href="#about" onClick={(e) => scrollTo('about', e)} style={{cursor:'pointer'}}>About</a></li>
+                <li><a href="/about/">About</a></li>
                 <li><a href="#loans" onClick={(e) => scrollTo('loans', e)} style={{cursor:'pointer'}}>Loan Programs</a></li>
                 <li><a href="#calculator" onClick={(e) => scrollTo('calculator', e)} style={{cursor:'pointer'}}>Calculator</a></li>
                 <li><a href="#pricepoint" onClick={(e) => scrollTo('pricepoint', e)} style={{cursor:'pointer'}}>PricePoint</a></li>

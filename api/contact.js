@@ -10,7 +10,11 @@ const FROM = 'Chris Granger Website <blueprint@realstack.app>'
 const DEFAULT_TO = 'cgranger@xperthomelending.com'
 
 // Only our own site may post to this endpoint.
-const ALLOWED_ORIGINS = new Set(['https://chris-granger-lo.vercel.app'])
+const ALLOWED_ORIGINS = new Set([
+  'https://www.chrisgrangermortgage.com',
+  'https://chrisgrangermortgage.com',
+  'https://chris-granger-lo.vercel.app',
+])
 
 // Mirrors the <select> in src/App.jsx. Anything else becomes "Other".
 const ALLOWED_INTERESTS = new Set([

@@ -580,9 +580,9 @@ export default function App() {
           </div>
           <div className="footer-bottom">
             <span>&copy; 2026 Chris Granger &middot; Xpert Home Lending</span>
-            <span style={{fontFamily:'var(--mono)'}}>NMLS #952015</span>
+            <span style={{fontFamily:'var(--mono)'}}>NMLS #952015 &middot; Xpert NMLS #2179191</span>
           </div>
-          <div className="footer-legal">Licensed mortgage broker (NMLS #952015) operating through Xpert Home Lending, Inc. Licensed in CA, OR, WA, NV, AZ, CO, HI, TX. All loans subject to credit approval. Equal Housing Lender.</div>
+          <div className="footer-legal">Licensed mortgage broker (NMLS #952015) operating through Xpert Home Lending, Inc. (NMLS #2179191). Licensed in CA, OR, WA, NV, AZ, CO, HI, TX. All loans subject to credit approval. Equal Housing Lender.</div>
         </div>
       </footer>
 

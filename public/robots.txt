@@ -67,4 +67,4 @@ User-agent: DotBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://chris-granger-lo.vercel.app/sitemap.xml
+Sitemap: https://www.chrisgrangermortgage.com/sitemap.xml

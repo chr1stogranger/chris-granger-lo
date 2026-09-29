@@ -160,7 +160,7 @@ export default function App() {
         <div className="container">
           <div className="stats-row">
             <div><h3>1,000+</h3><p>Loans Closed</p></div>
-            <div><h3>13+</h3><p>Years</p></div>
+            <div><h3>14</h3><p>Years</p></div>
             <div><h3>8</h3><p>States</p></div>
             <div><h3>5.0</h3><p>Yelp Rating</p></div>
           </div>
@@ -562,6 +562,7 @@ export default function App() {
                 <li><a href="#agents" onClick={(e) => scrollTo('agents', e)} style={{cursor:'pointer'}}>Agent Resources</a></li>
                 <li><a href="#contact" onClick={(e) => scrollTo('contact', e)} style={{cursor:'pointer'}}>Contact</a></li>
                 <li><a href={LINKS.calendly} target="_blank" rel="noopener noreferrer">Calendly</a></li>
+                <li><a href="https://www.realstack.app/" target="_blank" rel="noopener">Built on RealStack</a></li>
               </ul>
             </div>
             <div>

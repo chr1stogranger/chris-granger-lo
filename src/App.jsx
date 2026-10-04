@@ -159,10 +159,10 @@ export default function App() {
       <section className="stats-strip">
         <div className="container">
           <div className="stats-row">
-            <div><h3>1,000+</h3><p>Loans Closed</p></div>
-            <div><h3>14</h3><p>Years</p></div>
-            <div><h3>8</h3><p>States</p></div>
-            <div><h3>5.0</h3><p>Yelp Rating</p></div>
+            <div><div className="stat-value">1,000+</div><p>Loans Closed</p></div>
+            <div><div className="stat-value">14</div><p>Years</p></div>
+            <div><div className="stat-value">8</div><p>States</p></div>
+            <div><div className="stat-value">5.0</div><p>Yelp Rating</p></div>
           </div>
         </div>
       </section>
@@ -219,16 +219,16 @@ export default function App() {
             <h2>290+ five-star reviews.</h2>
           </div>
           <div className="stats-row" style={{marginBottom:'48px'}}>
-            <div><h3>5.0</h3><p>Rating</p></div>
-            <div><h3>290+</h3><p>Reviews</p></div>
-            <div><h3>100%</h3><p>5-Star</p></div>
-            <div><h3>1K+</h3><p>Clients</p></div>
+            <div><div className="stat-value">5.0</div><p>Rating</p></div>
+            <div><div className="stat-value">290+</div><p>Reviews</p></div>
+            <div><div className="stat-value">100%</div><p>5-Star</p></div>
+            <div><div className="stat-value">1K+</div><p>Clients</p></div>
           </div>
           <div className="review-featured-row">
-            <div className="review-card featured"><div className="review-featured-label">★ Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"I was skeptical when my husband said 'you're going to love his spreadsheet.' I've never loved a spreadsheet in my life. But my skepticism was undeserved. Chris and his spreadsheet made home ownership feel achievable, and he's the reason I'm writing this as a brand new homeowner. He was kind, patient, and left nothing unexplained."</p><div className="review-meta"><div className="review-avatar">LZ</div><div><p className="review-author">Lauren Z.</p><p className="review-source">Google</p></div></div></div>
-            <div className="review-card featured"><div className="review-featured-label">★ Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"If another lender told you that you don't qualify, don't give up. Reach out to Chris. He explored every available option and worked tirelessly to find a solution. Thanks to his team's dedication, we got the keys to our new home in just three weeks. His knowledge, creativity, and determination truly set him apart."</p><div className="review-meta"><div className="review-avatar">D</div><div><p className="review-author">Daniel</p><p className="review-source">Google</p></div></div></div>
-            <div className="review-card featured"><div className="review-featured-label">★ Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"What sets Chris apart is that he doesn't just process loans, he educates his clients. He guided us through purchasing our first two properties and recently helped us refinance one. Throughout every transaction, we always felt informed, supported, and confident. I recommend Chris without hesitation."</p><div className="review-meta"><div className="review-avatar">JB</div><div><p className="review-author">Jeorgea B.</p><p className="review-source">Yelp</p></div></div></div>
-            <div className="review-card featured"><div className="review-featured-label">★ Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"I'm self-employed, so my income isn't straightforward. Chris never once made it feel like we were a burden. He spent countless hours running scenarios and explaining our options. If you're looking for a mortgage broker, especially if you're self-employed, I couldn't recommend him more highly."</p><div className="review-meta"><div className="review-avatar">AK</div><div><p className="review-author">Aaron K.</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card featured"><div className="review-featured-label"><span aria-hidden="true">★</span> Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"I was skeptical when my husband said 'you're going to love his spreadsheet.' I've never loved a spreadsheet in my life. But my skepticism was undeserved. Chris and his spreadsheet made home ownership feel achievable, and he's the reason I'm writing this as a brand new homeowner. He was kind, patient, and left nothing unexplained."</p><div className="review-meta"><div className="review-avatar">LZ</div><div><p className="review-author">Lauren Z.</p><p className="review-source">Google</p></div></div></div>
+            <div className="review-card featured"><div className="review-featured-label"><span aria-hidden="true">★</span> Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"If another lender told you that you don't qualify, don't give up. Reach out to Chris. He explored every available option and worked tirelessly to find a solution. Thanks to his team's dedication, we got the keys to our new home in just three weeks. His knowledge, creativity, and determination truly set him apart."</p><div className="review-meta"><div className="review-avatar">D</div><div><p className="review-author">Daniel</p><p className="review-source">Google</p></div></div></div>
+            <div className="review-card featured"><div className="review-featured-label"><span aria-hidden="true">★</span> Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"What sets Chris apart is that he doesn't just process loans, he educates his clients. He guided us through purchasing our first two properties and recently helped us refinance one. Throughout every transaction, we always felt informed, supported, and confident. I recommend Chris without hesitation."</p><div className="review-meta"><div className="review-avatar">JB</div><div><p className="review-author">Jeorgea B.</p><p className="review-source">Yelp</p></div></div></div>
+            <div className="review-card featured"><div className="review-featured-label"><span aria-hidden="true">★</span> Featured Review</div><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"I'm self-employed, so my income isn't straightforward. Chris never once made it feel like we were a burden. He spent countless hours running scenarios and explaining our options. If you're looking for a mortgage broker, especially if you're self-employed, I couldn't recommend him more highly."</p><div className="review-meta"><div className="review-avatar">AK</div><div><p className="review-author">Aaron K.</p><p className="review-source">Yelp</p></div></div></div>
           </div>
           <div className="review-row">
             <div className="review-card"><div className="review-stars" role="img" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div><p className="review-text">"His spreadsheet is incredible. Chris walked us through every detail step by step."</p><div className="review-meta"><div className="review-avatar">FH</div><div><p className="review-author">First-Time Buyer</p><p className="review-source">Yelp</p></div></div></div>
@@ -267,7 +267,7 @@ export default function App() {
         <div className="container">
           <div className="about-grid-v3">
             <div style={{aspectRatio:'1',borderRadius:'var(--radius-xl)',background:'var(--bg-card)',border:'1px solid var(--border)',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden'}}>
-              <img src="/headshot.jpg" alt="Chris Granger, mortgage broker" style={{width:'100%',height:'100%',objectFit:'cover'}} onError={(e)=>{e.currentTarget.outerHTML='<svg width=\"80\" height=\"80\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23737373\" stroke-width=\"1\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/></svg>'}} />
+              <img src="/headshot.jpg" width="667" height="1000" alt="Chris Granger, mortgage broker" style={{width:'100%',height:'100%',objectFit:'cover'}} onError={(e)=>{e.currentTarget.outerHTML='<svg width=\"80\" height=\"80\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"%23737373\" stroke-width=\"1\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/></svg>'}} />
             </div>
             <div>
               <div className="label">About</div>

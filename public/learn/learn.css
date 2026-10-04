@@ -272,7 +272,14 @@ a:hover { color: var(--accent-bright); }
 /* Responsive */
 @media (max-width: 768px) {
   .header-nav { gap: 14px; }
-  .header-nav a:not(.btn-cta):not([href="/learn/"]) { display: none; }
+  .header-nav {
+    overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; max-width: 60vw; min-width: 0;
+  }
+  .header-nav::-webkit-scrollbar { display: none; }
+  .header-nav a { flex: 0 0 auto; }
+  .header-nav .btn-cta { position: sticky; right: 0; }
+  .logo { flex-shrink: 0; }
   .article-title { font-size: 1.8rem; }
   .article-meta { flex-wrap: wrap; gap: 12px; }
   .cta-banner { padding: 28px 20px; }
@@ -295,7 +302,3 @@ textarea:focus-visible {
 .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 1000; padding: 8px 14px; border-radius: 9999px; background: var(--accent); color: #fff; font-weight: 600; }
 .skip-link:focus { left: 8px; }
 
-/* Narrow phones: logo + Get Started only */
-@media (max-width: 420px) {
-  .header-nav a[href="/learn/"] { display: none; }
-}

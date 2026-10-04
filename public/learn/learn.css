@@ -271,15 +271,18 @@ a:hover { color: var(--accent-bright); }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .header-nav { gap: 14px; }
+  /* Phones: logo mark only, links scroll sideways, CTA pill rides at the end */
+  .header-inner { gap: 12px; }
+  .logo { flex-shrink: 0; }
+  .logo-text { display: none; }
   .header-nav {
+    flex: 1 1 auto; min-width: 0; gap: 14px; justify-content: flex-start;
     overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; max-width: 60vw; min-width: 0;
+    scrollbar-width: none; padding-bottom: 2px;
   }
   .header-nav::-webkit-scrollbar { display: none; }
   .header-nav a { flex: 0 0 auto; }
-  .header-nav .btn-cta { position: sticky; right: 0; }
-  .logo { flex-shrink: 0; }
+  .header-nav .btn-cta { padding: 7px 14px; }
   .article-title { font-size: 1.8rem; }
   .article-meta { flex-wrap: wrap; gap: 12px; }
   .cta-banner { padding: 28px 20px; }

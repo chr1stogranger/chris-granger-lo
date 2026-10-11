@@ -63,8 +63,10 @@ export default async function handler(req, res) {
   }
 
   // Origin allowlist. Browsers always send Origin on cross-site POSTs.
+  // Every browser sends Origin on a POST, same-origin included, so a request
+  // with none is a script, not the form. Reject it along with foreign origins.
   const origin = req.headers.origin
-  if (origin && !ALLOWED_ORIGINS.has(origin)) {
+  if (!origin || !ALLOWED_ORIGINS.has(origin)) {
     return res.status(403).json({ error: 'Forbidden' })
   }
 

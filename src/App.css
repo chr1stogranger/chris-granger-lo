@@ -373,6 +373,9 @@ textarea:focus-visible {
   overflow: hidden;
 }
 .embed-placeholder iframe { width: 100%; height: 700px; border: none; display: block; }
+/* Blueprint embed: 900px window showing the app at 75% (frame is 4/3 of the box) */
+.embed-placeholder.embed-blueprint { height: 900px; }
+.embed-placeholder .embed-blueprint-frame { width: 133.33%; height: 133.33%; transform: scale(0.75); transform-origin: top left; border: none; }
 
 .about-grid-v3 { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center; }
 
@@ -410,7 +413,12 @@ textarea:focus-visible {
   .hero-badges { flex-direction: column; align-items: center; }
   .cta-section h2 { font-size: 2.2rem; }
   .embed-placeholder iframe { height: 500px; }
+  /* On a phone the scaled 900px frame was a long scroll past a tiny app;
+     a viewport-sized window is enough to show it works. */
+  .embed-placeholder.embed-blueprint { height: 70vh; }
+  .embed-placeholder .embed-blueprint-frame { height: 93.33vh; }
 }
+
 
 /* Accessibility: visible focus ring for keyboard users */
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #3B6BF5; outline-offset: 2px; }

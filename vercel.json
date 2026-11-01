@@ -51,7 +51,25 @@
       ]
     },
     {
-      "source": "/(learn/learn\\.css|headshot\\.jpg|og-image\\.png|favicon\\.(ico|svg)|apple-touch-icon\\.png|icon-[0-9]+\\.(png|svg)|favicon-192\\.png)",
+      "source": "/learn/learn.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(headshot.jpg|og-image.png|apple-touch-icon.png|favicon.ico|favicon.svg|favicon-192.png)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/icon-(.*).(png|svg)",
       "headers": [
         {
           "key": "Cache-Control",

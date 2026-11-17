@@ -446,6 +446,16 @@ export default function App() {
           </div>
           <div className="contact-grid">
             <div className="contact-side">
+              <div className="contact-card" style={{background:'linear-gradient(135deg,rgba(59,107,245,0.14),rgba(43,79,206,0.06))',borderColor:'rgba(59,107,245,0.3)'}}>
+                <h4 style={{color:'var(--accent-light)'}}>Step 1: Apply</h4>
+                <p style={{marginBottom:'14px'}}>Secure online loan application.</p>
+                <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{width:'100%'}}>Start Application &rarr;</a>
+              </div>
+              <div className="contact-card">
+                <h4>Rather talk first?</h4>
+                <p style={{marginBottom:'14px'}}>15-min discovery or 30-min deep dive.</p>
+                <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg" style={{width:'100%'}}>Book a Call &rarr;</a>
+              </div>
               <div className="contact-card">
                 <h4>Phone</h4>
                 <a href={LINKS.phone}>(415) 987-8489</a>
@@ -457,16 +467,6 @@ export default function App() {
               <div className="contact-card">
                 <h4>Location</h4>
                 <p>Alameda & San Francisco, CA</p>
-              </div>
-              <div className="contact-card" style={{background:'linear-gradient(135deg,rgba(59,107,245,0.12),rgba(43,79,206,0.06))',borderColor:'rgba(59,107,245,0.2)'}}>
-                <h4 style={{color:'var(--accent-light)'}}>Schedule a Call</h4>
-                <p style={{marginBottom:'12px'}}>15-min discovery or 30-min deep dive.</p>
-                <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Open Calendly &rarr;</a>
-              </div>
-              <div className="contact-card">
-                <h4>Ready to Apply?</h4>
-                <p style={{marginBottom:'12px'}}>Secure online loan application.</p>
-                <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{fontSize:'0.8rem',padding:'10px 20px',width:'100%',justifyContent:'center'}}>Start Application</a>
               </div>
             </div>
             <form className="contact-form-card" onSubmit={handleSubmit}>
@@ -587,9 +587,9 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Floating Calendly CTA, always visible */}
+      {/* Floating Apply CTA, always visible */}
       <a
-        href={LINKS.calendly}
+        href={LINKS.apply}
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -604,12 +604,12 @@ export default function App() {
         }}
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 6px 28px rgba(59,107,245,0.5)'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 4px 20px rgba(59,107,245,0.4)'; }}
-        aria-label="Book a call with Chris Granger"
+        aria-label="Start your loan application"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
         </svg>
-        Book a Call
+        Apply Now
       </a>
     </>
   )

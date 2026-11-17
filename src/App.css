@@ -333,8 +333,8 @@ textarea:focus-visible {
 }
 .contact-card:hover { border-color: var(--border-hover); }
 .contact-card h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
-.contact-card p, .contact-card a { font-size: 0.82rem; color: var(--text-secondary); }
-.contact-card a:hover { color: var(--accent-light); }
+.contact-card p, .contact-card a:not(.btn) { font-size: 0.82rem; color: var(--text-secondary); }
+.contact-card a:not(.btn):hover { color: var(--accent-light); }
 .contact-form-card {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl);
   padding: 36px;

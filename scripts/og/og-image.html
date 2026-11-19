@@ -1,0 +1,80 @@
+<!doctype html><html><head><meta charset="utf-8">
+<!--
+  Source for public/og-image.png (1200x630): the card iMessage, Slack, LinkedIn
+  etc. show when a chrisgrangermortgage.com link is shared. White look
+  (2026-11-18), same recipe as realstack.app's card: white ground with the
+  faint blueprint grid, navy headline, pastel answer tile, black rainbow-edge
+  pill, Plaid water panel on the right.
+
+  Re-render from the repo root:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+      --disable-gpu --hide-scrollbars --force-device-scale-factor=1 --allow-file-access-from-files \
+      --window-size=1200,630 --virtual-time-budget=5000 \
+      --screenshot="$PWD/public/og-image.png" "file://$PWD/scripts/og/og-image.html"
+
+  Fonts load from public/fonts (never Google Fonts). iMessage caches a card per
+  URL, so bump the ?v= on og:image when this changes.
+-->
+<style>
+@font-face{font-family:Inter;font-weight:100 900;src:url("../../public/fonts/inter-latin.woff2") format("woff2")}
+@font-face{font-family:"Geist Mono";font-weight:100 900;src:url("../../public/fonts/geist-mono-latin.woff2") format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{color:#0b2545;font-family:Inter,sans-serif;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;position:relative;
+  background:#fff;
+  background-image:linear-gradient(rgba(43,79,206,0.075) 1px,transparent 1px),linear-gradient(90deg,rgba(43,79,206,0.075) 1px,transparent 1px);
+  background-size:32px 32px;background-position:-1px -1px}
+.mono{font-family:"Geist Mono",monospace;text-transform:uppercase}
+.left{position:absolute;left:64px;top:54px;bottom:54px;width:520px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:14px}
+.brand svg{width:46px;height:46px;border-radius:10px}
+.brand b{display:block;font-size:26px;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.brand span{display:block;margin-top:6px;font-size:11px;letter-spacing:0.15em;color:#2B5BE6}
+h1{margin-top:36px;font-size:64px;line-height:1.0;font-weight:900;letter-spacing:-0.05em}
+h1 em{font-style:normal;background:linear-gradient(120deg,#2B4FCE 0%,#3B6BF5 35%,#1FA2D6 65%,#0FB39E 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin-top:16px;font-size:21px;line-height:1.35;color:#46566b}
+.tile{margin-top:auto;display:flex;padding:18px 22px;border:1px solid #d3e2f2;border-radius:20px;background:linear-gradient(135deg,#ddf5f2 0%,#e5eeff 55%,#eee7fb 100%)}
+.tile div{flex:1}.tile div+div{padding-left:20px;margin-left:20px;border-left:1px solid rgba(11,37,69,0.12)}
+.tile strong{display:block;font-size:38px;line-height:1.05;font-weight:800;letter-spacing:-0.04em}
+.tile span{display:block;margin-top:4px;font-size:14px;color:#46566b}
+.pill{margin-top:16px;padding:16px 0;border:2px solid transparent;border-radius:9999px;background:linear-gradient(#111,#111) padding-box,conic-gradient(from 210deg,#3DF59A,#18D8E8,#6B7BFF,#F08AE0,#F7A54A,#F5E14A,#3DF59A) border-box;color:#fff;font-size:21px;font-weight:650;text-align:center}
+.water{position:absolute;right:32px;top:32px;bottom:32px;width:536px;border-radius:28px;overflow:hidden;padding:30px;display:flex;flex-direction:column;gap:18px;justify-content:center;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='9'%3E%3Cpath d='M0 4.5 C40 0 120 0 160 4.5 S280 9 320 4.5' fill='none' stroke='rgba(255,255,255,0.13)' stroke-width='0.9'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='14'%3E%3Cpath d='M0 7 C70 0 210 0 280 7 S490 14 560 7' fill='none' stroke='rgba(110,255,215,0.14)' stroke-width='0.9'/%3E%3C/svg%3E"),linear-gradient(150deg,#0B4AA8 0%,#0A78CC 45%,#13C4C2 100%)}
+.card{border-radius:20px;background:rgba(255,255,255,0.97);box-shadow:0 14px 36px -14px rgba(11,37,69,0.55)}
+.me{display:flex;gap:20px;align-items:center;padding:20px}
+.me img{width:118px;height:148px;border-radius:14px;object-fit:cover;object-position:50% 18%}
+.me b{display:block;font-size:28px;font-weight:800;letter-spacing:-0.03em}
+.me p{margin-top:4px;font-size:16px;color:#46566b;line-height:1.35}
+.me .k{margin-top:12px;font-size:11px;letter-spacing:0.13em;color:#2B5BE6}
+.rev{padding:22px 24px}
+.stars{color:#D98A0B;font-size:20px;letter-spacing:3px}
+.rev q{display:block;margin-top:8px;font-size:19px;line-height:1.4;color:#0b2545;font-weight:500;quotes:"\201C" "\201D"}
+.rev .who{margin-top:12px;font-size:14px;color:#46566b}
+.rev .who b{color:#0b2545}
+</style></head><body>
+<div class="left">
+  <div class="brand">
+    <svg viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#3B6BF5"/><stop offset="100%" stop-color="#2B4FCE"/></linearGradient></defs><rect width="100" height="100" fill="url(#g)"/><polygon points="50,12 8,30 50,25 92,30" fill="rgba(255,255,255,0.95)"/><polygon points="50,25 92,30 92,34 50,29" fill="rgba(255,255,255,0.48)"/><polygon points="50,25 8,30 8,34 50,29" fill="rgba(255,255,255,0.68)"/><polygon points="8,38 50,33 92,38 50,43" fill="rgba(255,255,255,0.90)"/><polygon points="8,38 50,43 50,46 8,41" fill="rgba(255,255,255,0.58)"/><polygon points="50,43 92,38 92,41 50,46" fill="rgba(255,255,255,0.40)"/><polygon points="8,52 50,47 92,52 50,57" fill="rgba(255,255,255,0.70)"/><polygon points="8,52 50,57 50,60 8,55" fill="rgba(255,255,255,0.45)"/><polygon points="50,57 92,52 92,55 50,60" fill="rgba(255,255,255,0.28)"/><polygon points="8,66 50,61 92,66 50,71" fill="rgba(255,255,255,0.50)"/><polygon points="8,66 50,71 50,74 8,69" fill="rgba(255,255,255,0.32)"/><polygon points="50,71 92,66 92,69 50,74" fill="rgba(255,255,255,0.18)"/><polygon points="8,80 50,75 92,80 50,85" fill="rgba(255,255,255,0.34)"/><polygon points="8,80 50,85 50,88 8,83" fill="rgba(255,255,255,0.20)"/><polygon points="50,85 92,80 92,83 50,88" fill="rgba(255,255,255,0.10)"/></svg>
+    <div><b>Chris Granger</b><span class="mono">Mortgage broker · NMLS #952015</span></div>
+  </div>
+  <h1>Your mortgage, <em>simplified.</em></h1>
+  <p class="sub">Alameda, San Francisco and the Bay Area. Every dollar visible before you buy.</p>
+  <div class="tile">
+    <div><strong>1,000+</strong><span>Loans closed</span></div>
+    <div><strong>290+</strong><span>Five-star reviews</span></div>
+    <div><strong>14yr</strong><span>Bay Area</span></div>
+  </div>
+  <div class="pill">Build your Blueprint</div>
+</div>
+<div class="water">
+  <div class="card me">
+    <img src="../../public/headshot.jpg" alt="">
+    <div><b>Chris Granger</b><p>Mortgage Broker<br>Alameda &amp; San Francisco</p><p class="k mono">Xpert Home Lending · 8 states</p></div>
+  </div>
+  <div class="card rev">
+    <div class="stars">★★★★★</div>
+    <q>Chris and his spreadsheet made home ownership feel achievable&hellip; He was kind, patient, and left nothing unexplained.</q>
+    <p class="who"><b>Lauren Z.</b> · Google review</p>
+  </div>
+</div>
+</body></html>

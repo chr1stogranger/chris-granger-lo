@@ -4,26 +4,31 @@
    Static HTML for maximum crawlability
    =================================================== */
 :root {
-  /* Grange brand kit — navy ground, blue accent (matches src/App.css) */
-  --bg-base: #0a1120;
-  --bg-elevated: #0d1524;
-  --bg-card: #121c30;
-  --bg-card-hover: #1a2740;
-  --bg-surface: #162034;
+  /* White look (2026-11-18), same tokens as src/App.css */
+  --bg-base: #FFFFFF;
+  --bg-elevated: #F7F9FC;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FBFCFE;
+  --bg-surface: #F4F7FB;
   --accent: #3B6BF5;
-  --accent-light: #6E90FF;
-  --accent-bright: #A9C0FF;
+  --accent-light: #2B5BE6;
+  --accent-bright: #2B4FCE;
   --accent-deep: #2B4FCE;   /* gradient partner ONLY — never a flat fill */
   --blue: #3B6BF5;
-  --teal: #38c6c6;
-  --green: #12a150;
+  --teal: #13A5A5;
+  --green: #0E8A43;
   --purple: #8b7bf0;
   --amber: #d98a0b;
-  --text-primary: #EDEDED;
-  --text-secondary: #A1A1A1;
-  --text-muted: #8A8A8A; /* 5.3:1 on #0a1120, AA-safe */
-  --border: rgba(255,255,255,0.08);
-  --border-hover: rgba(255,255,255,0.14);
+  --navy: #0B2545;
+  --text-primary: #0B2545;
+  --text-secondary: #46566B;
+  --text-muted: #667085;
+  --border: #DFE5EE;
+  --border-hover: #C9D3E0;
+  --rainbow: conic-gradient(from 210deg, #3DF59A, #18D8E8, #6B7BFF, #F08AE0, #F7A54A, #F5E14A, #3DF59A);
+  --pastel: linear-gradient(135deg, #DDF5F2 0%, #E5EEFF 55%, #EEE7FB 100%);
+  --pastel-border: #D3E2F2;
+  --shadow-card: 0 1px 2px rgba(16,24,40,0.04);
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: 'Geist Mono', 'SF Mono', 'JetBrains Mono', monospace;
   --radius: 12px;
@@ -41,18 +46,14 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-body::before {
-  content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 9998; opacity: 0.4;
-}
+
 a { color: var(--accent-light); text-decoration: none; transition: color 0.2s; }
 a:hover { color: var(--accent-bright); }
 
 /* Header */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background: rgba(10,17,32,0.85); backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255,255,255,0.86); backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--border);
 }
@@ -74,11 +75,12 @@ a:hover { color: var(--accent-bright); }
 .header-nav a:hover { color: var(--text-primary); }
 .btn-cta {
   padding: 8px 20px; border-radius: var(--radius-full);
-  background: var(--text-primary); color: var(--bg-base);
-  font-weight: 600; font-size: 0.8rem; border: none; cursor: pointer;
-  transition: all 0.2s;
+  color: #fff !important; border: 1.5px solid transparent;
+  background: linear-gradient(#111111, #111111) padding-box, var(--rainbow) border-box;
+  font-weight: 600; font-size: 0.8rem; cursor: pointer;
+  transition: all 0.2s; box-shadow: 0 6px 18px rgba(17,17,17,0.16);
 }
-.btn-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-cta:hover { background: linear-gradient(#2B2B2B, #2B2B2B) padding-box, var(--rainbow) border-box; transform: translateY(-1px); }
 
 /* Breadcrumb */
 .breadcrumb {
@@ -135,7 +137,7 @@ a:hover { color: var(--accent-bright); }
 
 /* Callout / Key Point Boxes */
 .callout {
-  background: var(--bg-card); border: 1px solid var(--border);
+  background: var(--pastel); border: 1px solid var(--pastel-border);
   border-left: 3px solid var(--accent); border-radius: var(--radius);
   padding: 20px 24px; margin: 28px 0;
 }
@@ -167,7 +169,7 @@ a:hover { color: var(--accent-bright); }
 .disclaimer { margin: 40px 0 8px; padding-top: 16px; border-top: 1px solid var(--border); }
 .faq-item {
   border: 1px solid var(--border); border-radius: var(--radius);
-  margin-bottom: 12px; overflow: hidden;
+  margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow-card);
 }
 .faq-question {
   padding: 16px 20px; font-weight: 600; font-size: 0.95rem;
@@ -192,7 +194,7 @@ a:hover { color: var(--accent-bright); }
 .cta-banner {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 40px;
-  text-align: center; margin: 48px 0;
+  text-align: center; margin: 48px 0; box-shadow: var(--shadow-card);
 }
 .cta-banner h3 {
   font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;
@@ -203,12 +205,12 @@ a:hover { color: var(--accent-bright); }
   display: inline-block; padding: 12px 32px; border-radius: var(--radius-full);
   background: linear-gradient(135deg, var(--accent), var(--accent-deep));
   color: #fff; font-weight: 600; font-size: 0.9rem;
-  box-shadow: 0 0 20px rgba(59,107,245,0.3); transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(59,107,245,0.22); transition: all 0.2s;
 }
-.cta-banner .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(59,107,245,0.4); }
+.cta-banner .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(59,107,245,0.3); }
 .cta-banner .btn-secondary {
   display: inline-block; padding: 12px 32px; border-radius: var(--radius-full);
-  border: 1px solid var(--border-hover); color: var(--text-secondary);
+  border: 1px solid var(--border-hover); color: var(--text-primary); background: #fff;
   font-weight: 500; font-size: 0.9rem; margin-left: 12px; transition: all 0.2s;
 }
 .cta-banner .btn-secondary:hover { border-color: var(--accent); color: var(--text-primary); }
@@ -220,7 +222,7 @@ a:hover { color: var(--accent-bright); }
 .related-card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 20px; transition: all 0.2s;
-  text-decoration: none;
+  text-decoration: none; box-shadow: var(--shadow-card);
 }
 .related-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); }
 .related-card .label {
@@ -245,7 +247,7 @@ a:hover { color: var(--accent-bright); }
 .hub-hero h1 {
   font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 800;
   letter-spacing: -0.05em; line-height: 1.05;
-  background: linear-gradient(135deg, #A9C0FF, #3B6BF5, #38c6c6, #12a150);
+  background: linear-gradient(120deg, #2B4FCE 0%, #3B6BF5 35%, #1FA2D6 65%, #0FB39E 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   background-clip: text; margin-bottom: 16px;
 }
@@ -262,7 +264,7 @@ a:hover { color: var(--accent-bright); }
 .hub-card {
   display: block; background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 24px; transition: all 0.25s;
-  text-decoration: none;
+  text-decoration: none; box-shadow: var(--shadow-card);
 }
 .hub-card:hover { border-color: var(--accent); background: var(--bg-card-hover); transform: translateY(-3px); }
 .hub-card h3 { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }

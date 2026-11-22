@@ -414,6 +414,8 @@ textarea:focus-visible {
   .contact-grid, .about-grid-v3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
+  /* Room under the footer so the floating Apply pill never covers the legal text */
+  .footer { padding-bottom: 88px; }
   .nav { display: none; }
   .mobile-menu-btn { display: block; }
   .hero { padding: 96px 0 40px; }

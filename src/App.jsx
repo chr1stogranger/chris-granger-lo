@@ -125,7 +125,7 @@ export default function App() {
               <a key={id} href={`#${id}`} onClick={(e) => scrollTo(id, e)} style={{color:'var(--text-secondary)',fontSize:'0.9rem',cursor:'pointer',textTransform:'capitalize'}}>{id === 'loans' ? 'Programs' : id === 'highcost' ? 'Credits' : id}</a>
             ))}
             <a href="/learn/" style={{color:'var(--accent-light)',fontSize:'0.9rem'}}>Learn</a>
-            <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
+            <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); scrollTo('contact', e); }} className="btn btn-accent" style={{marginTop:'8px',textAlign:'center'}}>Get Started</a>
           </div>
         )}
       </header>

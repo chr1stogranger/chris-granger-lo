@@ -507,7 +507,7 @@ export default function App() {
               </button>
               {formStatus === 'success' && <p role="status" aria-live="polite" style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#12a150',textAlign:'center',marginTop:'12px'}}>Message sent! I'll be in touch shortly.</p>}
               {formStatus === 'error' && <p role="alert" style={{fontFamily:'var(--mono)',fontSize:'0.75rem',color:'#EF4444',textAlign:'center',marginTop:'12px'}}>That didn't go through. Email me directly at <a href="mailto:cgranger@xperthomelending.com" style={{color:'#EF4444'}}>cgranger@xperthomelending.com</a> and I'll get right back to you.</p>}
-              {!formStatus && <p style={{fontFamily:'var(--mono)',fontSize:'0.6rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>}
+              {!formStatus && <p style={{fontFamily:'var(--mono)',fontSize:'0.72rem',color:'var(--text-muted)',textAlign:'center',marginTop:'12px'}}>Your information is encrypted and never shared.</p>}
             </form>
           </div>
         </div>

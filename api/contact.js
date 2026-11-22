@@ -13,7 +13,6 @@ const DEFAULT_TO = 'cgranger@xperthomelending.com'
 const ALLOWED_ORIGINS = new Set([
   'https://www.chrisgrangermortgage.com',
   'https://chrisgrangermortgage.com',
-  'https://chris-granger-lo.vercel.app',
 ])
 
 // Mirrors the <select> in src/App.jsx. Anything else becomes "Other".

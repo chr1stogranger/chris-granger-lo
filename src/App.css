@@ -348,7 +348,7 @@ textarea:focus-visible {
   padding: 24px; transition: all 0.2s ease; box-shadow: var(--shadow-card);
 }
 .contact-card:hover { border-color: var(--border-hover); }
-.contact-card h4 { font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
+.contact-card h3 { font-size: 0.82rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
 .contact-card p, .contact-card a:not(.btn) { font-size: 0.82rem; color: var(--text-secondary); }
 .contact-card a:not(.btn):hover { color: var(--accent-light); }
 .contact-form-card {

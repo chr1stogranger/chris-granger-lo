@@ -447,25 +447,25 @@ export default function App() {
           <div className="contact-grid">
             <div className="contact-side">
               <div className="contact-card" style={{background:'linear-gradient(135deg,rgba(59,107,245,0.14),rgba(43,79,206,0.06))',borderColor:'rgba(59,107,245,0.3)'}}>
-                <h4 style={{color:'var(--accent-light)'}}>Step 1: Apply</h4>
+                <h3 style={{color:'var(--accent-light)'}}>Step 1: Apply</h3>
                 <p style={{marginBottom:'14px'}}>Secure online loan application.</p>
                 <a href={LINKS.apply} target="_blank" rel="noopener noreferrer" className="btn btn-accent btn-lg" style={{width:'100%'}}>Start Application &rarr;</a>
               </div>
               <div className="contact-card">
-                <h4>Rather talk first?</h4>
+                <h3>Rather talk first?</h3>
                 <p style={{marginBottom:'14px'}}>15-min discovery or 30-min deep dive.</p>
                 <a href={LINKS.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg" style={{width:'100%'}}>Book a Call &rarr;</a>
               </div>
               <div className="contact-card">
-                <h4>Phone</h4>
+                <h3>Phone</h3>
                 <a href={LINKS.phone}>(415) 987-8489</a>
               </div>
               <div className="contact-card">
-                <h4>Email</h4>
+                <h3>Email</h3>
                 <a href={LINKS.email}>cgranger@xperthomelending.com</a>
               </div>
               <div className="contact-card">
-                <h4>Location</h4>
+                <h3>Location</h3>
                 <p>Alameda & San Francisco, CA</p>
               </div>
             </div>

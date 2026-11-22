@@ -288,6 +288,7 @@ a:hover { color: var(--accent-bright); }
   .article-title { font-size: 1.8rem; }
   .article-meta { flex-wrap: wrap; gap: 12px; }
   .cta-banner { padding: 28px 20px; }
+  .data-table th, .data-table td { padding: 10px 8px; font-size: 0.82rem; }
   .cta-banner .btn-secondary { display: block; margin: 12px auto 0; }
   .hub-cards { grid-template-columns: 1fr; }
   .related-grid { grid-template-columns: 1fr; }
